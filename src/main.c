@@ -1,6 +1,9 @@
 #include "MtlPktLyzer.h"
 #include "func_dec.h"
 #include "dbgprint.h" 
+#include <beacon_parser.h>
+
+
 
 int log_level = MSG_MSGDUMP;
 int debug_timestamp = 1;
@@ -12,7 +15,7 @@ pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
  void *(*bfill_d_fptr)(void *);
  void *(*bparse_d_fptr)(void *);
 
-
+struct fptr gfptr;
 void UsageHandler(char *str) {
 	printf("Usage: %s [interface] [-h] [-c SSID PWD ] [-p filter] [-s] [other_options]\n", str);
 	// Add help message explanations for each option here
@@ -21,6 +24,8 @@ void UsageHandler(char *str) {
 	printf("-c: connect to specific AP/ Router.\n");
 	printf("-p: capture packets and Specify a filter string.\n");
 	printf("-s: Scan for AP's/Wifi routers around you.\n");
+	//added
+	printf("-l: Scan Nearby APs with ssi and supported rates\n");
 	// Add more
 }
 
@@ -94,7 +99,7 @@ int main(int argc, char *argv[]) {
 
 
 	//printf("opt: %c", opt);
-	while ((opt = getopt(argc, argv, "c:p:hs:w")) != -1) {
+	while ((opt = getopt(argc, argv, "c:p:hs:w:l")) != -1) {
         switch (opt) {
 		case 'c':
 		
@@ -183,6 +188,28 @@ int main(int argc, char *argv[]) {
 				return 1;
 			}
 			handshake_implement(filter_exp1, interface, handle);
+			break;
+		case 'l':
+			/* capturing and parsing beacons
+			
+			*/
+			//char *filter_exp = "arp or udp or (icmp6 and icmp6[0] == 128) or (ip and (udp or icmp)) or ip6";
+			filter_exp = "type mgt and (subtype beacon or subtype probe-resp)";
+
+			if (pcap_compile(handle, &fp, filter_exp, 0, PCAP_NETMASK_UNKNOWN) == -1) {
+				dbg_log(MSG_DEBUG,"Couldn't parse filter %s: %s\n", filter_exp, pcap_geterr(handle));
+				return 1;
+			}
+
+
+			// Set the filter
+			if (pcap_setfilter(handle, &fp) == -1) {
+				fprintf(stderr, "Couldn't install filter %s: %s\n", filter_exp, pcap_geterr(handle));
+				dbg_log(MSG_DEBUG,"Couldn't install filter %s: %s\n", filter_exp, pcap_geterr(handle));
+				return 1;
+			}
+			
+			thread_creation = beacon_thread_implement(filter_exp, interface, handle, &beacon_parser_thread);
 			break;
 		case 'h':
 			UsageHandler(argv[0]);

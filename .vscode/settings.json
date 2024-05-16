@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "dbgprint.h": "c",
+        "mtlpktlyzer.h": "c",
+        "beacon_parser.h": "c"
+    }
+}

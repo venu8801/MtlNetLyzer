@@ -36,7 +36,11 @@ struct radiotap_header {
     uint8_t it_pad;
     uint16_t it_len;
     uint32_t it_present;
-};
+     /*---------more members 
+     * can be 
+     * added -------------*/
+
+}__attribute__((__packed__));
 
 struct ieee80211_header {
     uint8_t frame_control[2];
@@ -82,19 +86,24 @@ struct udp_header {
 	
 };
 
-// Define the IEEE 802.11 beacon frame structure (simplified)
+//beacon frame structure
 struct beacon_frame {
     uint8_t type_subtype;
     uint8_t flags;
     uint16_t duration;
-    uint8_t receiver_address[6];
-    uint8_t destination_address[6];
-    uint8_t transmitter_address[6];
-    uint8_t source_address[6];
-    uint8_t fragment_number:4;
-    uint8_t sequence_number:8;
-    // Followed by fixed parameters and tagged parameters...
-};
+    uint8_t receiver_address[6]; //alias of destination address
+   // uint8_t destination_address[6];
+    uint8_t transmitter_address[6];  //alias of source address
+   // uint8_t source_address[6];
+    uint8_t bssid[6];
+    uint16_t sequence_number;
+
+    /* Followed by fixed parameters and tagged parameters...
+    ....
+    ...
+    */
+}__attribute__((__packed__));
+
 
 
 struct PacketNode {
@@ -113,7 +122,7 @@ struct PacketQueue {
 struct fptr{
 void (*bfill_fptr)(void *);
 void (*bparse_fptr)(void *);
-}gfptr;
+};
 
 extern pthread_mutex_t mutex;
 extern pthread_cond_t cond;
