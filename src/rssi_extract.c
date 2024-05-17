@@ -74,11 +74,13 @@ int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *han
 /* thread which captures packets from handle */
 void *beacon_parser_thread(void *args){
 	pcap_t *handle = (pcap_t *)args;
-	printf("Inside %s\n",__func__);
+	printf("\n---------------------------------%s-----------------------------------------\n",__func__);
 	dbg_log(MSG_DEBUG,"-----------beacon capture---------\n");	
 	pcap_loop(handle,BEACON_LIMIT,beacon_handler_routine,NULL);
 	sleep(PARSE_DELAY);
+    #if DELETE_DUPS
 	delete_duplicate_packet();
+    #endif
 	sort_antSignal();
 	display_packet_queue();
 
@@ -118,14 +120,34 @@ void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, cons
     uint8_t *rssi_ptr = (uint8_t *)(bytes + 30);
     int16_t rssi = (int16_t)(*rssi_ptr);
 
-    insert_beacon_queue(timestr, usec_value, bf->transmitter_address, tagged_params, params_length, da, sa, rssi);
-    
+    const u_char *support_datarate = tagged_params + *(tagged_params + 1) + 2;
+    uint8_t tag_len = *(support_datarate+1);
+    uint8_t data[tag_len];
+    uint16_t ele_id = 0x32;
+    int i=0;
+    float support_rate[15];
+  for(i=0;i<tag_len;i++)
+  {
+       data[i]=(int)*(support_datarate+2+i);
+  } 
 
-
+  const u_char *k,*j;
+  const u_char *lsb;
+  k = support_datarate;
+  j = k+100;
+  for(k;k<j;k++)
+  {
+    if(*k == 0x2d)
+    {
+        lsb = (k+2);
+        //break;
+    }
+  }
+    insert_beacon_queue(timestr, usec_value, bf->transmitter_address, tagged_params, params_length, da, sa, rssi,data,tag_len,lsb);
 }
 
 // Function to create a node for storing beacon packet information
-int insert_beacon_queue(char *tmr, unsigned int usec, uint8_t *mac, const u_char *tagged_params, size_t length, const uint8_t *da, const uint8_t *sa, int16_t ant_signal) {
+int insert_beacon_queue(char *tmr, unsigned int usec, uint8_t *mac, const u_char *tagged_params, size_t length, const uint8_t *da, const uint8_t *sa, int16_t ant_signal,uint8_t  *data, uint8_t tag_len,const u_char *lsb) {
     struct packet_node *temp;
     temp = (struct packet_node *)malloc(sizeof(struct packet_node));
     if (temp == NULL) {
@@ -149,6 +171,20 @@ int insert_beacon_queue(char *tmr, unsigned int usec, uint8_t *mac, const u_char
     for (int i = 0; i < 6; i++) {
         temp->addr_sa[i] = sa[i];
     }
+    /*support data rate*/
+    for (int i = 0; i < tag_len; i++) 
+    {
+        // Extract rate from data and convert to Mbps
+        uint8_t rate = data[i] & 0x7F; // Mask out the MSB, which indicates basic rate
+        float rate_mbps = (float)rate / 2.0;
+        
+        temp->support_rate[i] = rate_mbps;
+        
+    }
+
+    /*bandwidth calculation*/
+    temp->bandwidth = (*lsb & 0x02);
+    temp->suratetag_len = tag_len;
     temp->ant_signal = ant_signal;
     temp->next = NULL;
 
@@ -210,7 +246,29 @@ void display_packet_queue() {
         printf("\tSignal: %ddBm", temp->ant_signal - 256);
         printf("\t  SSID: %s", temp->ssid);
         printf("\n");
- 
+        printf("\tSupported Rates: ");
+        for(int i=0;i<temp->suratetag_len;i++)
+        {
+           printf("%.1f",temp->support_rate[i]);
+           if(i != temp->suratetag_len - 1)
+                printf(",   ");
+
+        }
+        printf("\t[Mbit/sec]");
+        printf("\n");
+        //printf("\tsupported bandwidth is %u\n",temp->bandwidth);
+        if(temp->bandwidth == 0 )
+        {
+            printf("\tSupports only for 20MHz\n");
+        }
+        else
+        {
+
+            printf("\tSupports 20MHz and 40MHz\n");
+        }
+        printf("\n");
+        printf("\n");
+        
         temp = temp->next;
     }
     printf("\n");
@@ -248,7 +306,7 @@ void delete_duplicate_packet() {
     }
 }
 
-
+/* sorting of nodes by their strength using bubble sort exchange by links */
 void sort_antSignal(){
 
 	if(front == NULL){

@@ -1,0 +1,517 @@
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+deleted file mode 100644
+index 24b1295..0000000
+--- a/.vscode/settings.json
++++ /dev/null
+@@ -1,7 +0,0 @@
+-{
+-    "files.associations": {
+-        "dbgprint.h": "c",
+-        "mtlpktlyzer.h": "c",
+-        "beacon_parser.h": "c"
+-    }
+-}
+\ No newline at end of file
+diff --git a/MtlNetLyzer b/MtlNetLyzer
+old mode 100755
+new mode 100644
+index b0325de..4187a51
+Binary files a/MtlNetLyzer and b/MtlNetLyzer differ
+diff --git a/include/MtlPktLyzer.h b/include/MtlPktLyzer.h
+index 7205706..2ee1940 100644
+--- a/include/MtlPktLyzer.h
++++ b/include/MtlPktLyzer.h
+@@ -36,11 +36,7 @@ struct radiotap_header {
+     uint8_t it_pad;
+     uint16_t it_len;
+     uint32_t it_present;
+-     /*---------more members 
+-     * can be 
+-     * added -------------*/
+-
+-}__attribute__((__packed__));
++};
+ 
+ struct ieee80211_header {
+     uint8_t frame_control[2];
+@@ -86,24 +82,19 @@ struct udp_header {
+ 	
+ };
+ 
+-//beacon frame structure
++// Define the IEEE 802.11 beacon frame structure (simplified)
+ struct beacon_frame {
+     uint8_t type_subtype;
+     uint8_t flags;
+     uint16_t duration;
+-    uint8_t receiver_address[6]; //alias of destination address
+-   // uint8_t destination_address[6];
+-    uint8_t transmitter_address[6];  //alias of source address
+-   // uint8_t source_address[6];
+-    uint8_t bssid[6];
+-    uint16_t sequence_number;
+-
+-    /* Followed by fixed parameters and tagged parameters...
+-    ....
+-    ...
+-    */
+-}__attribute__((__packed__));
+-
++    uint8_t receiver_address[6];
++    uint8_t destination_address[6];
++    uint8_t transmitter_address[6];
++    uint8_t source_address[6];
++    uint8_t fragment_number:4;
++    uint8_t sequence_number:8;
++    // Followed by fixed parameters and tagged parameters...
++};
+ 
+ 
+ struct PacketNode {
+@@ -122,7 +113,7 @@ struct PacketQueue {
+ struct fptr{
+ void (*bfill_fptr)(void *);
+ void (*bparse_fptr)(void *);
+-};
++}gfptr;
+ 
+ extern pthread_mutex_t mutex;
+ extern pthread_cond_t cond;
+diff --git a/include/beacon_parser.h b/include/beacon_parser.h
+deleted file mode 100644
+index 52b2809..0000000
+--- a/include/beacon_parser.h
++++ /dev/null
+@@ -1,27 +0,0 @@
+-struct packet_node {
+-    char timer[16];
+-    unsigned long int microsec;
+-    uint8_t addr[6];
+-    char ssid[50];
+-    uint8_t addr_da[6];
+-    uint8_t addr_sa[6];
+-    int16_t ant_signal;
+-    float support_rate[8];
+-    struct packet_node *next;
+-};
+-int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, void* (*thread_ptr)(void *) );
+-void *beacon_parser_thread(void *args);
+-void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *hdr, const u_char *bytes);
+-int insert_beacon_queue(char *tmr, unsigned int usec, uint8_t *mac, const u_char *tagged_params, size_t length, const uint8_t *da, const uint8_t *sa, int16_t ant_signal);
+-void display_packet_queue();
+-void delete_duplicate_packet();
+-// Function to extract SSID
+-void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf);
+-
+-/* sorts based on antenna signal 
+- * uses bubble sort 
+- */
+-void sort_antSignal();
+-
+-#define BEACON_LIMIT 100	/* beacon frames limit */
+-#define PARSE_DELAY 3
+\ No newline at end of file
+diff --git a/log/cap_debug.log b/log/cap_debug.log
+deleted file mode 100755
+index 2fcff2e..0000000
+--- a/log/cap_debug.log
++++ /dev/null
+@@ -1,16 +0,0 @@
+-1715862035.964073: glob
+-1715862035.964087: optind: 2, argc:3
+-1715862035.964088: main: Logging in  DEBUG
+-
+-1715862035.964090: main: Logging in  ERROR
+-
+-1715862035.964090: main: Logging in  INFO
+-
+-1715862035.964091: main: Logging in  WARNING
+-
+-1715862035.964091: main: Logging in  DUMP 
+-
+-1715862035.965399: beacon parser thread creation in process
+-1715862035.965504: -----------beacon capture---------
+-
+-1715862040.842790: Closing function successfullly
+diff --git a/obj/connect_pkt.o b/obj/connect_pkt.o
+index 52c78be..a9ec227 100644
+Binary files a/obj/connect_pkt.o and b/obj/connect_pkt.o differ
+diff --git a/obj/dbgprint.o b/obj/dbgprint.o
+index 368ef85..846155b 100644
+Binary files a/obj/dbgprint.o and b/obj/dbgprint.o differ
+diff --git a/obj/handshake.o b/obj/handshake.o
+index f901352..ce0bd84 100644
+Binary files a/obj/handshake.o and b/obj/handshake.o differ
+diff --git a/obj/main.o b/obj/main.o
+index e80be8d..eb1d166 100644
+Binary files a/obj/main.o and b/obj/main.o differ
+diff --git a/obj/pkt_cap.o b/obj/pkt_cap.o
+index c43aacb..54ee997 100644
+Binary files a/obj/pkt_cap.o and b/obj/pkt_cap.o differ
+diff --git a/obj/rssi_extract.o b/obj/rssi_extract.o
+deleted file mode 100644
+index 523b208..0000000
+Binary files a/obj/rssi_extract.o and /dev/null differ
+diff --git a/obj/scan_pkt.o b/obj/scan_pkt.o
+index 8b65183..eff2c3c 100644
+Binary files a/obj/scan_pkt.o and b/obj/scan_pkt.o differ
+diff --git a/src/main.c b/src/main.c
+index cf7e477..9cc8431 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1,9 +1,6 @@
+ #include "MtlPktLyzer.h"
+ #include "func_dec.h"
+ #include "dbgprint.h" 
+-#include <beacon_parser.h>
+-
+-
+ 
+ int log_level = MSG_MSGDUMP;
+ int debug_timestamp = 1;
+@@ -15,7 +12,7 @@ pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+  void *(*bfill_d_fptr)(void *);
+  void *(*bparse_d_fptr)(void *);
+ 
+-struct fptr gfptr;
++
+ void UsageHandler(char *str) {
+ 	printf("Usage: %s [interface] [-h] [-c SSID PWD ] [-p filter] [-s] [other_options]\n", str);
+ 	// Add help message explanations for each option here
+@@ -24,8 +21,6 @@ void UsageHandler(char *str) {
+ 	printf("-c: connect to specific AP/ Router.\n");
+ 	printf("-p: capture packets and Specify a filter string.\n");
+ 	printf("-s: Scan for AP's/Wifi routers around you.\n");
+-	//added
+-	printf("-l: Scan Nearby APs with ssi and supported rates\n");
+ 	// Add more
+ }
+ 
+@@ -99,7 +94,7 @@ int main(int argc, char *argv[]) {
+ 
+ 
+ 	//printf("opt: %c", opt);
+-	while ((opt = getopt(argc, argv, "c:p:hs:w:l")) != -1) {
++	while ((opt = getopt(argc, argv, "c:p:hs:w")) != -1) {
+         switch (opt) {
+ 		case 'c':
+ 		
+@@ -189,28 +184,6 @@ int main(int argc, char *argv[]) {
+ 			}
+ 			handshake_implement(filter_exp1, interface, handle);
+ 			break;
+-		case 'l':
+-			/* capturing and parsing beacons
+-			
+-			*/
+-			//char *filter_exp = "arp or udp or (icmp6 and icmp6[0] == 128) or (ip and (udp or icmp)) or ip6";
+-			filter_exp = "type mgt and (subtype beacon or subtype probe-resp)";
+-
+-			if (pcap_compile(handle, &fp, filter_exp, 0, PCAP_NETMASK_UNKNOWN) == -1) {
+-				dbg_log(MSG_DEBUG,"Couldn't parse filter %s: %s\n", filter_exp, pcap_geterr(handle));
+-				return 1;
+-			}
+-
+-
+-			// Set the filter
+-			if (pcap_setfilter(handle, &fp) == -1) {
+-				fprintf(stderr, "Couldn't install filter %s: %s\n", filter_exp, pcap_geterr(handle));
+-				dbg_log(MSG_DEBUG,"Couldn't install filter %s: %s\n", filter_exp, pcap_geterr(handle));
+-				return 1;
+-			}
+-			
+-			thread_creation = beacon_thread_implement(filter_exp, interface, handle, &beacon_parser_thread);
+-			break;
+ 		case 'h':
+ 			UsageHandler(argv[0]);
+ 			return EXIT_SUCCESS;
+diff --git a/src/rssi_extract.c b/src/rssi_extract.c
+deleted file mode 100644
+index 1d09dd0..0000000
+--- a/src/rssi_extract.c
++++ /dev/null
+@@ -1,283 +0,0 @@
+-//parses radiotap info
+-
+-//#include <beacon_parser.h>
+-#include <sys/types.h>
+-#include "MtlPktLyzer.h"
+-#include "func_dec.h"
+-#include "dbgprint.h" 
+-#include <beacon_parser.h>
+-
+-
+-/* beacon queue nodes*/
+-struct packet_node *rear = NULL;
+-struct packet_node *front = NULL;
+-int beacon_count=1;
+-
+-
+-// int ssi_parser(const u_char *packet){
+-	
+-// 	struct radiotap_header * radioInfo = (struct radiotap_header *)packet;
+-// 	printf("size of radiottap struct: %ld\n",sizeof(struct radiotap_header));
+-// 	uint16_t rlen = radioInfo->it_len;
+-	
+-// //	printf("radio tap length: %d\n",*(packet + 2));
+-	
+-// 	printf("radio tap length: %d\n",rlen);
+-
+-// 	//antenna signal strength at 30th byte
+-	
+-// 	uint8_t *rssi_ptr = packet + 30;
+-
+-// 	uint8_t rssi =  (*rssi_ptr);
+-	
+-// 	//IEEE 802.11 beacon frame
+-// //	printf("r:%p  p:%p\n",radioInfo,packet);
+-// 	struct beacon_frame *beaconFrame = (struct beacon_frame *)((uint8_t *)radioInfo + rlen);
+-// 	printf("size: %ld\n",(char *)(beaconFrame) - (char *)radioInfo);
+-	
+-// 	printf("subtype: %x\n",beaconFrame->type_subtype);
+-
+-// 	printf("Mac Addr: ");
+-// 	mac_parser( (uint8_t *)(beaconFrame->transmitter_address) );
+-
+-// 	printf("Antenna Signal Hex : %02x\n",(uint8_t)rssi);
+-	
+-// 	printf("Antenna Signal : %d dBm\n",(int16_t)rssi - 256);
+-// 	insert_queue((uint8_t *)beaconFrame->transmitter_address, rssi);
+-
+-// }
+-
+-
+-
+-//int handle_beacon(const u_char* mgm_frame, )
+-
+-
+-/* call back function which creates thread for beacon parser */
+-int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, void* (*thread_ptr)(void *) ){
+-	//printf("\nInside beacon thread implement\n");
+-	struct bpf_program fp;
+-	pthread_t beacon_parser_id;
+-	dbg_log(MSG_DEBUG,"beacon parser thread creation in process");
+-	 if (pthread_create(&beacon_parser_id, NULL, thread_ptr, (void *)handle) !=0 ) {
+-        fprintf(stderr, "Error creating beacon parser thread\n");
+-		dbg_log(MSG_DEBUG,"Error creating beacon parser thread\n");
+-        pcap_freecode(&fp); // Free the compiled filter
+-        pcap_close(handle); // Close pcap handle
+-        return EXIT_FAILURE;
+-    }
+-	
+-	 // Wait for the packet capture thread to finish
+-    pthread_join(beacon_parser_id, NULL);
+-}
+-
+-
+-/* thread which captures packets from handle */
+-void *beacon_parser_thread(void *args){
+-	pcap_t *handle = (pcap_t *)args;
+-	printf("Inside %s\n",__func__);
+-	dbg_log(MSG_DEBUG,"-----------beacon capture---------\n");	
+-	pcap_loop(handle,BEACON_LIMIT,beacon_handler_routine,NULL);
+-	sleep(PARSE_DELAY);
+-	delete_duplicate_packet();
+-	sort_antSignal();
+-	display_packet_queue();
+-
+-}
+-
+-void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, const u_char *bytes){
+-
+-		//printf("Inside %s\n",__func__);
+-
+-	struct radiotap_header *rth = (struct radiotap_header *)(bytes);
+-    int header_len = rth->it_len;
+-    struct tm *ltime;
+-    char timestr[16];
+-    time_t local_tv_sec;
+-    unsigned int usec_value;
+-    local_tv_sec = header->ts.tv_sec;
+-    ltime = localtime(&local_tv_sec);
+-    strftime(timestr, sizeof timestr, "%H:%M:%S", ltime);
+-    usec_value = header->ts.tv_usec;
+-
+-    struct beacon_frame *bf = (struct beacon_frame *)(bytes + header_len);
+-
+-    // Pointer to the start of the IEEE 802.11 header, right after the Radiotap header
+-    const uint8_t *ieee80211_header = bytes + header_len;
+-
+-    // Destination Address is the first address field in the 802.11 header for management frames
+-    const uint8_t *da = ieee80211_header + 4; // Skipping Frame Control (2 bytes) and Duration (2 bytes)
+-
+-    // Source Address
+-    const uint8_t *sa = ieee80211_header + 4 + 6; // Skipping Frame Control (2 bytes), Duration (2 bytes), and DA (6 bytes)
+-
+-    // Extract SSID from tagged parameters
+-    const u_char *tagged_params = bytes + header_len + 24 + 12;
+-    size_t params_length = header->caplen - (header_len + 24 + 12);
+-
+-    // Antenna signal strength at 30th byte
+-    uint8_t *rssi_ptr = (uint8_t *)(bytes + 30);
+-    int16_t rssi = (int16_t)(*rssi_ptr);
+-
+-    insert_beacon_queue(timestr, usec_value, bf->transmitter_address, tagged_params, params_length, da, sa, rssi);
+-    
+-
+-
+-}
+-
+-// Function to create a node for storing beacon packet information
+-int insert_beacon_queue(char *tmr, unsigned int usec, uint8_t *mac, const u_char *tagged_params, size_t length, const uint8_t *da, const uint8_t *sa, int16_t ant_signal) {
+-    struct packet_node *temp;
+-    temp = (struct packet_node *)malloc(sizeof(struct packet_node));
+-    if (temp == NULL) {
+-        printf("Memory not allocated\n");
+-        return -1;
+-    }
+-    // Copy the time string to the timer field
+-    strcpy(temp->timer, tmr);
+-    temp->microsec = usec;
+-    for (int i = 0; i < 6; i++) {
+-        temp->addr[i] = mac[i];
+-    }
+-    // Copying SSID
+-    copy_ssid(tagged_params, length, temp->ssid);
+-
+-    // Destination Address
+-    for (int i = 0; i < 6; i++) {
+-        temp->addr_da[i] = da[i];
+-    }
+-    // Source Address
+-    for (int i = 0; i < 6; i++) {
+-        temp->addr_sa[i] = sa[i];
+-    }
+-    temp->ant_signal = ant_signal;
+-    temp->next = NULL;
+-
+-    if (rear == NULL)
+-        front = rear = temp;
+-    else
+-        rear->next = temp;
+-    rear = temp;
+-
+-	return 0;
+-}
+-
+-
+-// Function to extract SSID
+-void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf) {
+-    size_t i = 0, j;
+-    while (i < length) {
+-        uint8_t tag_type = tagged_params[i];
+-        uint8_t tag_len = tagged_params[i + 1];
+-        if (tag_type == 0) { // SSID tag type
+-            for (j = 0; j < tag_len; ++j) {
+-                char ssid_char = tagged_params[i + 2 + j];
+-                buf[j] = ssid_char;
+-            }
+-            buf[j] = '\0'; // null terminator
+-            break;
+-        }
+-        i += 2 + tag_len; // Move to the next tag
+-    }
+-}
+-
+-// Function to display packet information
+-void display_packet_queue() {
+-    struct packet_node *temp = front;
+-    if (temp == NULL) {
+-        printf("Queue is empty\n");
+-        return;
+-    }
+-    while (temp != NULL) {
+-        printf("%d >",beacon_count++);
+-        printf("Timestamp:%s.%06ld\t ", temp->timer, temp->microsec);
+-        printf("  BSSID:");
+-        for (int i = 0; i < 5; i++)
+-            printf("%02x:", temp->addr[i]);
+-        printf("%02x", temp->addr[5]);
+- 
+-       /* // Destination Address
+-        printf("\tDA:");
+-        for (int i = 0; i < 5; i++)
+-            printf("%02x:", temp->addr_da[i]);
+-        printf("%02x", temp->addr_da[5]);
+- 
+-        // Source Address
+-        printf("\tSA:");
+-        for (int i = 0; i < 5; i++)
+-            printf("%02x:", temp->addr_sa[i]);
+-        printf("%02x", temp->addr_sa[5]);*/
+- 
+-        printf("\tSignal: %ddBm", temp->ant_signal - 256);
+-        printf("\t  SSID: %s", temp->ssid);
+-        printf("\n");
+- 
+-        temp = temp->next;
+-    }
+-    printf("\n");
+-}
+-
+-// Function to delete duplicate nodes
+-void delete_duplicate_packet() {
+-    struct packet_node *p, *q, *s;
+-    if (rear == NULL) {
+-        printf("Queue is empty\n");
+-        return;
+-    }
+-    for (p = front; p != NULL; p = p->next) {
+-        for (s = p, q = p->next; q != NULL;) {
+-            int count = 1;
+-            for (int i = 0; i < 6; i++) {
+-                if (p->addr[i] != q->addr[i]) {
+-                    count = 0;
+-                    break;
+-                }
+-            }
+-            if (count) {
+-                s->next = q->next;
+-                if (q == rear) {
+-                    rear = s;
+-                }
+-                struct packet_node *temp = q;
+-                q = q->next;
+-                free(temp);
+-            } else {
+-                s = q;
+-                q = q->next;
+-            }
+-        }
+-    }
+-}
+-
+-
+-void sort_antSignal(){
+-
+-	if(front == NULL){
+-		printf("list is empty\n");
+-		return;
+-	}
+-	if(front == rear)
+-		return;
+-	struct packet_node *p,*q, *e = NULL, *s, *r, *temp;
+-
+-	for(e = NULL; front->next != e; e = q)
+-	{
+-		for(r = p = front; p->next != e; r = p, p = p->next)
+-		{
+-			q = p->next;
+-			if(p->ant_signal < q->ant_signal)
+-			{
+-				p->next = q->next;
+-				q->next = p;
+-				if(p!=front)
+-					r->next = q;
+-				else
+-					front = q;
+-				if(q == rear)
+-					rear = p;
+-				temp = p;
+-				p = q;
+-				q = temp;
+-			}
+-		}
+-	}			
+-}
+\ No newline at end of file
