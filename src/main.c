@@ -194,7 +194,7 @@ int main(int argc, char *argv[]) {
 			
 			*/
 			//char *filter_exp = "arp or udp or (icmp6 and icmp6[0] == 128) or (ip and (udp or icmp)) or ip6";
-			filter_exp = "type mgt and (subtype beacon or subtype probe-resp)";
+			filter_exp = "type mgt and (subtype beacon)";
 
 			if (pcap_compile(handle, &fp, filter_exp, 0, PCAP_NETMASK_UNKNOWN) == -1) {
 				dbg_log(MSG_DEBUG,"Couldn't parse filter %s: %s\n", filter_exp, pcap_geterr(handle));
