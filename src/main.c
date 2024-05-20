@@ -128,6 +128,7 @@ int main(int argc, char *argv[]) {
 		case 'p':
 		   
 			/* Assign corresponding functions to function pointers */
+			
 		    gfptr->bfill_fptr = &packet_capture_thread;
 			gfptr->bparse_fptr = &packet_parse_thread;
 
@@ -195,7 +196,9 @@ int main(int argc, char *argv[]) {
 			*/
 			//char *filter_exp = "arp or udp or (icmp6 and icmp6[0] == 128) or (ip and (udp or icmp)) or ip6";
 			filter_exp = "type mgt and (subtype beacon)";
-
+			struct beacon_fptr bfptr;
+			bfptr.bfill_fptr = &beacon_capture_thread;
+			bfptr.bparse_fptr = &beacon_parser_thread;
 			if (pcap_compile(handle, &fp, filter_exp, 0, PCAP_NETMASK_UNKNOWN) == -1) {
 				dbg_log(MSG_DEBUG,"Couldn't parse filter %s: %s\n", filter_exp, pcap_geterr(handle));
 				return 1;
@@ -209,7 +212,7 @@ int main(int argc, char *argv[]) {
 				return 1;
 			}
 			
-			thread_creation = beacon_thread_implement(filter_exp, interface, handle, &beacon_parser_thread);
+			thread_creation = beacon_thread_implement(filter_exp, interface, handle, &bfptr);
 			break;
 		case 'h':
 			UsageHandler(argv[0]);

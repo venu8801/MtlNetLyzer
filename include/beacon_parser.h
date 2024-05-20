@@ -31,8 +31,15 @@ struct queue_node_arg
 
 };
 
-int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, void *(*thread_ptr)(void *));
+
+struct beacon_fptr{
+void* (*bfill_fptr)(void *);
+void* (*bparse_fptr)(void *);
+};
+
+int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, struct beacon_fptr *);
 void *beacon_parser_thread(void *args);
+void *beacon_capture_thread(void *args);
 void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *hdr, const u_char *bytes);
 // Function to create a node for storing beacon packet information
 int insert_beacon_queue(struct queue_node_arg *);
@@ -46,8 +53,9 @@ void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf);
  */
 void sort_antSignal();
 
-#define BEACON_LIMIT 500 /* beacon frames limit */
-#define PARSE_DELAY 2
+#define BEACON_LIMIT 50 /* beacon frames limit */
+#define PARSE_DELAY 5
 #define DELETE_DUPS 1
 #define BEACON_EXTRA_INFO  0 /* adds extra info into
-beacon node*/
+								beacon node*/
+#define PACKET_COUNT_PER_CYCLE 5
