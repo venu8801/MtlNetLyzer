@@ -39,7 +39,7 @@ void *beacon_capture_thread(void *args)
                 pthread_cond_signal(&captureDone);
                 pthread_cond_wait(&captureDone, &beaconMutex);
             }
-            printf("packet capture %d\n", beaconCaptureCount);
+          //  printf("packet capture %d\n", beaconCaptureCount);
             beacon_handler_routine((u_char *)handle, header, packet); // extract the data from beacon
             pthread_mutex_unlock(&beaconMutex);
         }
@@ -310,9 +310,23 @@ void display_packet_queue()
         BeaconNode = BeaconNode->next;
     }
     printf("\n");
+    delete_all_nodes();
     beaconCaptureCount = 0; // reset count agian to 0
     pthread_mutex_unlock(&beaconMutex);
     printf("----------------------------------------------------------------------------------\n");
+}
+
+void delete_all_nodes() {
+    struct packet_node *temp,*next;
+    temp=front;
+    next=NULL;
+    while (temp != NULL) {
+        next = temp->next;
+        free(temp);
+        temp = next;
+    }
+	front=rear=NULL;
+    printf("All nodes have been deleted.\n");
 }
 
 // Function to delete duplicate nodes
