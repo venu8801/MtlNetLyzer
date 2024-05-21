@@ -58,4 +58,4 @@ void sort_antSignal();
 #define DELETE_DUPS 1
 #define BEACON_EXTRA_INFO  0 /* adds extra info into
 								beacon node*/
-#define PACKET_COUNT_PER_CYCLE 5
+#define PACKET_COUNT_PER_CYCLE 350

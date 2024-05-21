@@ -28,18 +28,22 @@ void *beacon_capture_thread(void *args)
     // Capture packets until the timeout or a fixed number of packets is reached
     while (1)
     {
-
+         pthread_mutex_lock(&beaconMutex);
         if (pcap_next_ex(handle, &header, &packet) == 1)
         {
+            
             //printf("inside while\n");
             beaconCaptureCount++;
-            pthread_mutex_lock(&beaconMutex);
+            //pthread_mutex_lock(&beaconMutex);
             if (beaconCaptureCount > PACKET_COUNT_PER_CYCLE)
             {
+                printf("signalling parse thread cap count: %d\n",beaconCaptureCount);
                 pthread_cond_signal(&captureDone);
+                printf("waiting till parse completes\n");
                 pthread_cond_wait(&captureDone, &beaconMutex);
+                printf("out of wait [cap]\n");
             }
-          //  printf("packet capture %d\n", beaconCaptureCount);
+            printf("packet capture %d\n", beaconCaptureCount);
             beacon_handler_routine((u_char *)handle, header, packet); // extract the data from beacon
             pthread_mutex_unlock(&beaconMutex);
         }
@@ -80,14 +84,19 @@ void *beacon_parser_thread(void *args)
         // sleep(PARSE_DELAY);
         printf("trying to acquire mtx\n");
         pthread_mutex_lock(&beaconMutex);
-        if (rear == NULL)
+        if (rear == NULL){
+            printf("waiting for capture thread\n");
             pthread_cond_wait(&captureDone, &beaconMutex);
+            printf("out of wait [parse]\n");
+        }
 #if DELETE_DUPS
         delete_duplicate_packet();
 #endif
         sort_antSignal();
         display_packet_queue();
+        printf("signalling cap thread\n");
         pthread_cond_signal(&captureDone);
+         pthread_mutex_unlock(&beaconMutex);
         sleep(PARSE_DELAY);
     }
 }
@@ -312,7 +321,7 @@ void display_packet_queue()
     printf("\n");
     delete_all_nodes();
     beaconCaptureCount = 0; // reset count agian to 0
-    pthread_mutex_unlock(&beaconMutex);
+    //pthread_mutex_unlock(&beaconMutex);
     printf("----------------------------------------------------------------------------------\n");
 }
 
