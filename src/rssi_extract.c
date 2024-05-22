@@ -89,6 +89,9 @@ void *beacon_parser_thread(void *args)
             pthread_cond_wait(&captureDone, &beaconMutex);
             printf("out of wait [parse]\n");
         }
+	else if(beaconCaptureCount < PACKET_COUNT_PER_CYCLE){
+		pthread_cond_wait(&captureDone, &beaconMutex);
+	}
 #if DELETE_DUPS
         delete_duplicate_packet();
 #endif
