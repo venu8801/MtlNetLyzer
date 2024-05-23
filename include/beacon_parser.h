@@ -51,7 +51,7 @@ void display_packet_queue();
 void delete_duplicate_packet();
 // Function to extract SSID
 void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf);
-
+void delete_all_nodes() ;
 /* sorts based on antenna signal
  * uses bubble sort
  */
