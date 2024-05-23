@@ -9,7 +9,8 @@
 #define SNAP_LEN 1518  // Max bytes per packet
 #define SIZE_ETHERNET 14
 #define WLAN_RADIO_HDR_LEN 8
-#define MAX_CHANNELS 11
+//#define MAX_CHANNELS 11
+#define NUM_CHANNELS 20
 #define CHANNEL_HOP_INTERVAL 2
 //#define CHANNEL_HOP_INTERVAL 10 
 #define INTERFACE "wlp0s20f3"

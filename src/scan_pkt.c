@@ -146,7 +146,7 @@ void scan_parse_thread(u_char *args, const struct pcap_pkthdr *header, const u_c
         // Extract and print the SSID
         extract_ssid(tagged_params, params_length);
 
-        int ieee80211_header_offset = 0/*determine_offset(packet)*//* offset value here */; // This needs to be determined dynamically or set based on your environment
+        int ieee80211_header_offset = 0 /*determine_offset(packet)*//* offset value here */; // This needs to be determined dynamically or set based on your environment
         const uint8_t *frame_body = packet.packet + ieee80211_header_offset;
 
         // Assuming we're directly at the frame body of a Beacon frame...
@@ -164,18 +164,18 @@ void scan_parse_thread(u_char *args, const struct pcap_pkthdr *header, const u_c
 
             switch (id) {
                 case 1: // Supported Rates
-                    printf(" Supported Rates:");
+                    //printf(" Supported Rates:");
                     dbg_log(MSG_DEBUG," Supported Rates:");
-                    print_supported_rates(data, len);
+                  //  print_supported_rates(data, len);
                     break;
                 case 3: // DS Parameter Set (Channel)
-                    printf(" CH: %d, ", data[0]);
+                    //printf(" CH: %d, ", data[0]);
                     dbg_log(MSG_DEBUG," CH: %d, ", data[0]);
                     break;
                 case 50: // Extended Supported Rates
-                    printf(" Extended Supported Rates:");
+                    //printf(" Extended Supported Rates:");
                     dbg_log(MSG_DEBUG," Extended Supported Rates:");
-                    print_supported_rates(data, len);
+                    //print_supported_rates(data, len);
                     break;
             }
             index += len + 2; // Move to the next tag
@@ -183,8 +183,8 @@ void scan_parse_thread(u_char *args, const struct pcap_pkthdr *header, const u_c
 
         // Extracting the Capability Info directly for Privacy bit
         const uint16_t *capability_info = (const uint16_t *)(frame_body + 10); // Offset 10 within the beacon frame body
-        printf(" PRIVACY: %s\n", (*capability_info & 0x0010) ? "Yes" : "No");
-        dbg_log(MSG_DEBUG," PRIVACY: %s\n", (*capability_info & 0x0010) ? "Yes" : "No");
+        //printf(" PRIVACY: %s\n", (*capability_info & 0x0010) ? "Yes" : "No");
+        //dbg_log(MSG_DEBUG," PRIVACY: %s\n", (*capability_info & 0x0010) ? "Yes" : "No");
 
         printf("\n");
     }
@@ -209,7 +209,7 @@ int setChannel(const char *interface, int channel) {
 
     // Execute command
     int ret = system(command);
-    printf("%s \n command =====",command);
+    printf("%s \n command =====\t",command);
     if (ret != 0) {
         fprintf(stderr, "Failed to set channel %d: %s\n", channel, strerror(errno));
         dbg_log(MSG_DEBUG,"Failed to set channel %d: %s\n", channel, strerror(errno));
@@ -270,16 +270,18 @@ void scan_capture_thread(void *arg) {
     const u_char *packet;
     int timeout_ms = 1000; // Timeout in milliseconds
     int packet_count = 0;
+    int channels[NUM_CHANNELS] = {1,2,3,4,5,6,7,8,9,10,11,36,40,44,48,149,153,157,161,165};
 
-    for (int channel = 1; channel <= MAX_CHANNELS; channel++) {
-        if (setChannel(INTERFACE, channel) != 0) {
-            fprintf(stderr, "Failed to set channel %d\n", channel);
-            dbg_log(MSG_DEBUG,"Failed to set channel %d\n", channel);
+    for(int i=0;i < NUM_CHANNELS; i++){
+	    //for (int i = 1; i <= MAX_CHANNELS; i++) {
+        if (setChannel(INTERFACE, channels[i]) != 0) {
+            fprintf(stderr, "Failed to set channel %d\n", channels[i]);
+            //dbg_log(MSG_DEBUG,"Failed to set channel %d\n", channels[i]);
             continue;
         }
 
-        printf("Channel %d: Capturing beacons...\n", channel);
-        dbg_log(MSG_DEBUG,"Channel %d: Capturing beacons...\n", channel);
+        printf("Channel %d: Capturing beacons...\n", channels[i]);
+       // dbg_log(MSG_DEBUG,"Channel %d: Capturing beacons...\n", channels[i]);
         packet_count = 0;
 
         // Set the timeout for pcap_next_ex

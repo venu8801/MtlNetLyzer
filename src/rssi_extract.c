@@ -43,7 +43,7 @@ void *beacon_capture_thread(void *args)
                 pthread_cond_wait(&captureDone, &beaconMutex);
                 printf("out of wait [cap]\n");
             }
-            printf("packet capture %d\n", beaconCaptureCount);
+           // printf("packet capture %d\n", beaconCaptureCount);
             beacon_handler_routine((u_char *)handle, header, packet); // extract the data from beacon
             pthread_mutex_unlock(&beaconMutex);
         }

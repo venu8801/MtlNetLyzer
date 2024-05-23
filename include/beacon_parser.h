@@ -52,7 +52,7 @@ void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf);
  * uses bubble sort
  */
 void sort_antSignal();
-
+void delete_all_nodes();
 #define BEACON_LIMIT 50 /* beacon frames limit */
 #define PARSE_DELAY 5
 #define DELETE_DUPS 1

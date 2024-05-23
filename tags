@@ -1,0 +1,237 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BEACON_EXTRA_INFO	include/beacon_parser.h	59;"	d
+BEACON_LIMIT	include/beacon_parser.h	56;"	d
+CC	Makefile	/^CC = gcc$/;"	m
+CHANNEL_HOP_INTERVAL	include/scan.h	13;"	d
+DELETE_DUPS	include/beacon_parser.h	58;"	d
+EapolFrame	include/handshake.h	/^} EapolFrame;$/;"	t	typeref:struct:__anon3
+EthernetHeader	include/handshake.h	/^} EthernetHeader;$/;"	t	typeref:struct:__anon2
+FC_FROM_DS	include/MtlPktLyzer.h	22;"	d
+FC_MORE_DATA	include/MtlPktLyzer.h	26;"	d
+FC_MORE_FLAG	include/MtlPktLyzer.h	23;"	d
+FC_ORDER	include/MtlPktLyzer.h	28;"	d
+FC_POWER_MGMT	include/MtlPktLyzer.h	25;"	d
+FC_PROTECTED	include/MtlPktLyzer.h	27;"	d
+FC_RETRY	include/MtlPktLyzer.h	24;"	d
+FC_SUBTYPE	include/MtlPktLyzer.h	20;"	d
+FC_TO_DS	include/MtlPktLyzer.h	21;"	d
+FC_TYPE	include/MtlPktLyzer.h	19;"	d
+FC_VERSION	include/MtlPktLyzer.h	18;"	d
+HDRS	Makefile	/^HDRS = $(call rwildcard,include\/,*.h)$/;"	m
+INTERFACE	include/scan.h	15;"	d
+LDFLAGS	Makefile	/^LDFLAGS = -lpcap -lpthread$/;"	m
+MAX_CHANNELS	include/scan.h	12;"	d
+MAX_HANDSHAKE_COUNT	include/handshake.h	11;"	d
+MAX_LINE_SIZE	src/connect_pkt.c	11;"	d	file:
+MAX_QUEUE_SIZE	include/MtlPktLyzer.h	30;"	d
+MSG_DEBUG	include/dbgprint.h	/^	 MSG_MSGDUMP, MSG_DEBUG, MSG_INFO, MSG_WARNING, MSG_ERROR$/;"	e	enum:__anon1
+MSG_ERROR	include/dbgprint.h	/^	 MSG_MSGDUMP, MSG_DEBUG, MSG_INFO, MSG_WARNING, MSG_ERROR$/;"	e	enum:__anon1
+MSG_INFO	include/dbgprint.h	/^	 MSG_MSGDUMP, MSG_DEBUG, MSG_INFO, MSG_WARNING, MSG_ERROR$/;"	e	enum:__anon1
+MSG_MSGDUMP	include/dbgprint.h	/^	 MSG_MSGDUMP, MSG_DEBUG, MSG_INFO, MSG_WARNING, MSG_ERROR$/;"	e	enum:__anon1
+MSG_WARNING	include/dbgprint.h	/^	 MSG_MSGDUMP, MSG_DEBUG, MSG_INFO, MSG_WARNING, MSG_ERROR$/;"	e	enum:__anon1
+OBJDIR	Makefile	/^OBJDIR = obj$/;"	m
+OBJS	Makefile	/^OBJS = $(patsubst src\/%.c, $(OBJDIR)\/%.o, $(SRCS))$/;"	m
+PACKET_COUNT_PER_CHANNEL	include/scan.h	16;"	d
+PACKET_COUNT_PER_CYCLE	include/beacon_parser.h	61;"	d
+PARSE_DELAY	include/beacon_parser.h	57;"	d
+PRINTF_FORMAT	include/dbgprint.h	23;"	d
+PacketNode	include/MtlPktLyzer.h	/^struct PacketNode {$/;"	s
+PacketQueue	include/MtlPktLyzer.h	/^struct PacketQueue {$/;"	s
+SIZE_ETHERNET	include/scan.h	10;"	d
+SNAP_LEN	include/scan.h	9;"	d
+SRCS	Makefile	/^SRCS = $(call rwildcard,src\/,*.c)$/;"	m
+TARGET	Makefile	/^TARGET = MtlNetLyzer$/;"	m
+UsageHandler	src/main.c	/^void UsageHandler(char *str) {$/;"	f
+WLAN_FC_TYPE_CTRL	include/MtlPktLyzer.h	12;"	d
+WLAN_FC_TYPE_DATA	include/MtlPktLyzer.h	13;"	d
+WLAN_FC_TYPE_MGMT	include/MtlPktLyzer.h	11;"	d
+WLAN_RADIO_HDR_LEN	include/scan.h	11;"	d
+acknowledgement	include/MtlPktLyzer.h	/^    uint32_t acknowledgement;$/;"	m	struct:tcp_header
+addr	include/beacon_parser.h	/^	uint8_t addr[6];$/;"	m	struct:packet_node
+addr_da	include/beacon_parser.h	/^	uint8_t addr_da[6];$/;"	m	struct:packet_node
+addr_sa	include/beacon_parser.h	/^	uint8_t addr_sa[6];$/;"	m	struct:packet_node
+ant_signal	include/beacon_parser.h	/^	int16_t ant_signal;$/;"	m	struct:packet_node
+ant_signal	include/beacon_parser.h	/^	int16_t ant_signal;$/;"	m	struct:queue_node_arg
+bandwidth	include/beacon_parser.h	/^	uint8_t bandwidth;$/;"	m	struct:packet_node
+beaconCaptureCount	src/rssi_extract.c	/^int beaconCaptureCount = 0;$/;"	v
+beaconMutex	src/rssi_extract.c	/^pthread_mutex_t beaconMutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v
+beacon_capture_thread	src/rssi_extract.c	/^void *beacon_capture_thread(void *args)$/;"	f
+beacon_count	src/rssi_extract.c	/^int beacon_count = 1;$/;"	v
+beacon_fptr	include/beacon_parser.h	/^struct beacon_fptr{$/;"	s
+beacon_frame	include/MtlPktLyzer.h	/^struct beacon_frame {$/;"	s
+beacon_handler_routine	src/rssi_extract.c	/^void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, const u_char *bytes)$/;"	f
+beacon_parser_thread	src/rssi_extract.c	/^void *beacon_parser_thread(void *args)$/;"	f
+beacon_thread_implement	src/rssi_extract.c	/^int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, struct beacon_fptr *bfptr)$/;"	f
+bfill_d_fptr	src/main.c	/^ void *(*bfill_d_fptr)(void *);$/;"	v
+bfill_fptr	include/MtlPktLyzer.h	/^void (*bfill_fptr)(void *);$/;"	m	struct:fptr
+bfill_fptr	include/beacon_parser.h	/^void* (*bfill_fptr)(void *);$/;"	m	struct:beacon_fptr
+bparse_d_fptr	src/main.c	/^ void *(*bparse_d_fptr)(void *);$/;"	v
+bparse_fptr	include/MtlPktLyzer.h	/^void (*bparse_fptr)(void *);$/;"	m	struct:fptr
+bparse_fptr	include/beacon_parser.h	/^void* (*bparse_fptr)(void *);$/;"	m	struct:beacon_fptr
+bssid	include/MtlPktLyzer.h	/^    uint8_t bssid[6];$/;"	m	struct:beacon_frame
+bssid	include/MtlPktLyzer.h	/^    uint8_t bssid[ETHER_ADDR_LEN];$/;"	m	struct:ieee80211_header
+captureDone	src/rssi_extract.c	/^pthread_cond_t captureDone = PTHREAD_COND_INITIALIZER;$/;"	v
+capture_thread_implement	src/pkt_cap.c	/^u_int8_t capture_thread_implement(char *filter, char *interface, pcap_t *handle, struct fptr *gfptr) {$/;"	f
+checksum	include/MtlPktLyzer.h	/^    uint16_t checksum;$/;"	m	struct:tcp_header
+checksum	include/MtlPktLyzer.h	/^    uint16_t checksum;$/;"	m	struct:udp_header
+cond	src/main.c	/^pthread_cond_t cond = PTHREAD_COND_INITIALIZER;$/;"	v
+connect_capture_thread	src/connect_pkt.c	/^void connect_capture_thread(void *arg) {$/;"	f
+connect_packet_handler	src/connect_pkt.c	/^void connect_packet_handler(u_char *user,const struct pcap_pkthdr *pkthdr, const u_char *packet) {$/;"	f
+connect_parse_thread	src/connect_pkt.c	/^void connect_parse_thread() {$/;"	f
+connect_thread_implement	src/connect_pkt.c	/^u_int8_t connect_thread_implement(char *filter, char *interface, pcap_t *handle, struct fptr *gfptr) {$/;"	f
+copy_ssid	src/rssi_extract.c	/^void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf)$/;"	f
+count	include/MtlPktLyzer.h	/^	int count;$/;"	m	struct:PacketQueue
+ctrl_frame_subtypes	src/connect_pkt.c	/^const char *ctrl_frame_subtypes[] = {"Reserved", "Reserved", "Reserved", "Reserved", "Reserved", "Reserved", "Reserved", $/;"	v
+da	include/beacon_parser.h	/^	const uint8_t *da;$/;"	m	struct:queue_node_arg
+data	include/beacon_parser.h	/^	uint8_t *data;$/;"	m	struct:queue_node_arg
+data_frame_subtypes	src/connect_pkt.c	/^const char *data_frame_subtypes[] = {"Data", "Data + CF-ACK", "Data + CF-Poll", "Data + CF-ACK + CF-Poll", $/;"	v
+data_offset	include/MtlPktLyzer.h	/^    uint8_t  data_offset;$/;"	m	struct:tcp_header
+dbg_log	src/dbgprint.c	/^void dbg_log(int level, const char *fmt, ...)$/;"	f
+debug_close_file	src/dbgprint.c	/^void debug_close_file(void)$/;"	f
+debug_file_path	src/main.c	/^const char *debug_file_path = ".\/log\/cap_debug.log";$/;"	v
+debug_open_file	src/dbgprint.c	/^int debug_open_file(const char *path)$/;"	f
+debug_print_timestamp	src/dbgprint.c	/^void debug_print_timestamp(void)$/;"	f
+debug_syslog	src/main.c	/^int debug_syslog = 0;$/;"	v
+debug_timestamp	src/main.c	/^int debug_timestamp = 1;$/;"	v
+debug_tracing_file	src/dbgprint.c	/^static FILE *debug_tracing_file = NULL;$/;"	v	file:
+delete_duplicate_packet	src/rssi_extract.c	/^void delete_duplicate_packet()$/;"	f
+dequeuePacket	src/connect_pkt.c	/^struct PacketNode dequeuePacket() {$/;"	f
+descriptor_type	include/handshake.h	/^    uint8_t descriptor_type;    \/\/ Type of Key Descriptor$/;"	m	struct:__anon3
+dest_port	include/MtlPktLyzer.h	/^    uint16_t dest_port;$/;"	m	struct:tcp_header
+dest_port	include/MtlPktLyzer.h	/^    uint16_t dest_port;$/;"	m	struct:udp_header
+determine_offset	src/scan_pkt.c	/^int determine_offset(const uint8_t *packet) {$/;"	f
+display_packet_queue	src/rssi_extract.c	/^void display_packet_queue()$/;"	f
+duration	include/MtlPktLyzer.h	/^    uint16_t duration;$/;"	m	struct:beacon_frame
+duration	include/MtlPktLyzer.h	/^    uint8_t duration[2];$/;"	m	struct:ieee80211_header
+enqueuePacket	src/connect_pkt.c	/^void enqueuePacket(const struct pcap_pkthdr *header, const u_char *packet) {$/;"	f
+ether_daddr	include/handshake.h	/^    uint8_t ether_daddr[ETHER_ADDR_LEN]; \/\/ Destination MAC address$/;"	m	struct:__anon2
+ether_saddr	include/handshake.h	/^    uint8_t ether_saddr[ETHER_ADDR_LEN]; \/\/ Source MAC address$/;"	m	struct:__anon2
+ether_type	include/handshake.h	/^    uint16_t ether_type; \/\/ Ethernet type$/;"	m	struct:__anon2
+exit_handler	src/main.c	/^void exit_handler()$/;"	f
+extract_ssid	src/scan_pkt.c	/^void extract_ssid(const u_char *tagged_params, size_t length) {$/;"	f
+flags	include/MtlPktLyzer.h	/^    uint8_t  flags;$/;"	m	struct:tcp_header
+flags	include/MtlPktLyzer.h	/^    uint8_t flags;$/;"	m	struct:beacon_frame
+fptr	include/MtlPktLyzer.h	/^struct fptr{$/;"	s
+frame_control	include/MtlPktLyzer.h	/^    uint8_t frame_control[2];$/;"	m	struct:ieee80211_header
+frame_type_names	src/connect_pkt.c	/^const char *frame_type_names[] = {"Management", "Control", "Data"};$/;"	v
+front	include/MtlPktLyzer.h	/^	int front;$/;"	m	struct:PacketQueue
+front	src/rssi_extract.c	/^struct packet_node *front = NULL;$/;"	v	typeref:struct:packet_node
+gfptr	src/main.c	/^struct fptr gfptr;$/;"	v	typeref:struct:fptr
+handshake_implement	src/handshake.c	/^void handshake_implement(char *filter, char *interface, pcap_t *handle) {$/;"	f
+handshake_packetHandler	src/handshake.c	/^void handshake_packetHandler(u_char* userData, const struct pcap_pkthdr* pkthdr, const u_char* packet) {$/;"	f
+header	include/MtlPktLyzer.h	/^	struct pcap_pkthdr header;$/;"	m	struct:PacketNode	typeref:struct:PacketNode::pcap_pkthdr
+ieee80211_header	include/MtlPktLyzer.h	/^struct ieee80211_header {$/;"	s
+initPacketQueue	src/connect_pkt.c	/^void initPacketQueue() {$/;"	f
+insert_beacon_queue	src/rssi_extract.c	/^int insert_beacon_queue(struct queue_node_arg *NodeQueue)$/;"	f
+ip_dst	include/MtlPktLyzer.h	/^    uint32_t ip_dst;                 \/\/ destination address$/;"	m	struct:ip_header
+ip_header	include/MtlPktLyzer.h	/^struct ip_header {$/;"	s
+ip_id	include/MtlPktLyzer.h	/^    uint16_t ip_id;                  \/\/ identification$/;"	m	struct:ip_header
+ip_len	include/MtlPktLyzer.h	/^    uint16_t ip_len;                 \/\/ total length$/;"	m	struct:ip_header
+ip_off	include/MtlPktLyzer.h	/^    uint16_t ip_off;                 \/\/ fragment offset field$/;"	m	struct:ip_header
+ip_p	include/MtlPktLyzer.h	/^    uint8_t  ip_p;                   \/\/ protocol$/;"	m	struct:ip_header
+ip_src	include/MtlPktLyzer.h	/^    uint32_t ip_src;                 \/\/ source address$/;"	m	struct:ip_header
+ip_sum	include/MtlPktLyzer.h	/^    uint16_t ip_sum;                 \/\/ checksum$/;"	m	struct:ip_header
+ip_tos	include/MtlPktLyzer.h	/^    uint8_t  ip_tos;                 \/\/ type of service$/;"	m	struct:ip_header
+ip_ttl	include/MtlPktLyzer.h	/^    uint8_t  ip_ttl;                 \/\/ time to live$/;"	m	struct:ip_header
+ip_vhl	include/MtlPktLyzer.h	/^    uint8_t  ip_vhl;                 \/\/ version and header length$/;"	m	struct:ip_header
+isQueueEmpty	src/connect_pkt.c	/^int isQueueEmpty() {$/;"	f
+isQueueFull	src/connect_pkt.c	/^int isQueueFull() {$/;"	f
+it_len	include/MtlPktLyzer.h	/^    uint16_t it_len;$/;"	m	struct:radiotap_header
+it_pad	include/MtlPktLyzer.h	/^    uint8_t it_pad;$/;"	m	struct:radiotap_header
+it_present	include/MtlPktLyzer.h	/^    uint32_t it_present;$/;"	m	struct:radiotap_header
+it_version	include/MtlPktLyzer.h	/^    uint8_t it_version;$/;"	m	struct:radiotap_header
+key_data	include/handshake.h	/^    uint8_t key_data[0];        \/\/ Key Data$/;"	m	struct:__anon3
+key_data_length	include/handshake.h	/^    uint16_t key_data_length;   \/\/ Length of Key Data field$/;"	m	struct:__anon3
+key_id	include/handshake.h	/^    uint64_t key_id;            \/\/ Key ID$/;"	m	struct:__anon3
+key_info	include/handshake.h	/^    uint16_t key_info;          \/\/ Key Information field$/;"	m	struct:__anon3
+key_iv	include/handshake.h	/^    uint64_t key_iv;            \/\/ Key IV$/;"	m	struct:__anon3
+key_length	include/handshake.h	/^    uint16_t key_length;        \/\/ Length of Key field$/;"	m	struct:__anon3
+key_mic	include/handshake.h	/^    uint8_t key_mic[16];        \/\/ Key MIC$/;"	m	struct:__anon3
+key_nonce	include/handshake.h	/^    uint8_t key_nonce[32];      \/\/ Key Nonce$/;"	m	struct:__anon3
+key_rsc	include/handshake.h	/^    uint64_t key_rsc;           \/\/ Key RSC$/;"	m	struct:__anon3
+last_path	src/dbgprint.c	/^static char *last_path = NULL;$/;"	v	file:
+len	include/MtlPktLyzer.h	/^	uint16_t len;  \/\/ Added length field$/;"	m	struct:tcp_header
+len	include/MtlPktLyzer.h	/^    uint16_t len;$/;"	m	struct:udp_header
+length	include/beacon_parser.h	/^	size_t length;$/;"	m	struct:queue_node_arg
+length	include/handshake.h	/^    uint16_t length;            \/\/ Length of EAPOL frame$/;"	m	struct:__anon3
+log_level	src/main.c	/^int log_level = MSG_MSGDUMP;$/;"	v
+lsb	include/beacon_parser.h	/^	const u_char *lsb;$/;"	m	struct:queue_node_arg
+mac	include/beacon_parser.h	/^	uint8_t *mac;$/;"	m	struct:queue_node_arg
+main	src/main.c	/^int main(int argc, char *argv[]) {$/;"	f
+mgmt_frame_subtypes	src/connect_pkt.c	/^const char *mgmt_frame_subtypes[] = {"Association Request", "Association Response", "Reassociation Request", $/;"	v
+microsec	include/beacon_parser.h	/^	unsigned long int microsec;$/;"	m	struct:packet_node
+mutex	src/main.c	/^pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v
+next	include/beacon_parser.h	/^	struct packet_node *next;$/;"	m	struct:packet_node	typeref:struct:packet_node::packet_node
+osl_free	src/dbgprint.c	/^void osl_free(void *ptr)$/;"	f
+osl_get_time	src/dbgprint.c	/^int osl_get_time(struct osl_time *t)$/;"	f
+osl_malloc	src/dbgprint.c	/^void * osl_malloc(size_t size)$/;"	f
+osl_memcmp	src/dbgprint.c	/^int osl_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+osl_memcpy	src/dbgprint.c	/^void * osl_memcpy(void *dest, const void *src, size_t n)$/;"	f
+osl_strcmp	src/dbgprint.c	/^int osl_strcmp(const char *s1, const char *s2)$/;"	f
+osl_strdup	src/dbgprint.c	/^char * osl_strdup(const char *s)$/;"	f
+osl_strlen	src/dbgprint.c	/^size_t osl_strlen(const char *s)$/;"	f
+osl_time	include/dbgprint.h	/^struct osl_time {$/;"	s
+osl_time_t	include/dbgprint.h	/^typedef long osl_time_t;$/;"	t
+out_file	src/dbgprint.c	/^static FILE *out_file = NULL;$/;"	v	file:
+packet	include/MtlPktLyzer.h	/^	unsigned char packet[2048]; \/\/ Adjust the size as needed$/;"	m	struct:PacketNode
+packetQueue	src/connect_pkt.c	/^struct PacketQueue packetQueue;$/;"	v	typeref:struct:PacketQueue
+packet_capture_thread	src/pkt_cap.c	/^void packet_capture_thread(void *arg) {$/;"	f
+packet_handler	src/pkt_cap.c	/^void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u_char *packet) {$/;"	f
+packet_node	include/beacon_parser.h	/^struct packet_node$/;"	s
+packet_parse_thread	src/pkt_cap.c	/^void packet_parse_thread(u_char *args, const struct pcap_pkthdr *header, const u_char *packet) {$/;"	f
+print_da_address	src/scan_pkt.c	/^void print_da_address(const uint8_t *addr) {$/;"	f
+print_ip	src/connect_pkt.c	/^void print_ip(uint32_t ip_addr) {$/;"	f
+print_mac	src/connect_pkt.c	/^void print_mac(const u_char *mac_addr) {$/;"	f
+print_mac_address	src/scan_pkt.c	/^void print_mac_address(uint8_t *addr) {$/;"	f
+print_sa_address	src/scan_pkt.c	/^void print_sa_address(const uint8_t *addr) {$/;"	f
+print_supported_rates	src/scan_pkt.c	/^void print_supported_rates(const uint8_t *rates, int len) {$/;"	f
+print_tcp_header	src/connect_pkt.c	/^void print_tcp_header(const struct tcp_header *tcp_hdr) {$/;"	f
+print_udp_header	src/connect_pkt.c	/^void print_udp_header(const struct udp_header *udp_hdr) {$/;"	f
+processPacket	src/pkt_cap.c	/^void processPacket(struct PacketNode packet) {$/;"	f
+queue	include/MtlPktLyzer.h	/^	struct PacketNode queue[MAX_QUEUE_SIZE];$/;"	m	struct:PacketQueue	typeref:struct:PacketQueue::PacketNode
+queue_node_arg	include/beacon_parser.h	/^struct queue_node_arg$/;"	s
+radiotap_header	include/MtlPktLyzer.h	/^struct radiotap_header {$/;"	s
+rear	include/MtlPktLyzer.h	/^	int rear;$/;"	m	struct:PacketQueue
+rear	src/rssi_extract.c	/^struct packet_node *rear = NULL;$/;"	v	typeref:struct:packet_node
+receiver_address	include/MtlPktLyzer.h	/^    uint8_t receiver_address[6]; \/\/alias of destination address$/;"	m	struct:beacon_frame
+receiver_address	include/MtlPktLyzer.h	/^    uint8_t receiver_address[ETHER_ADDR_LEN];$/;"	m	struct:ieee80211_header
+replay_counter	include/handshake.h	/^    uint64_t replay_counter;    \/\/ Replay Counter$/;"	m	struct:__anon3
+reserved	include/MtlPktLyzer.h	/^    uint8_t  reserved;$/;"	m	struct:tcp_header
+rwildcard	Makefile	/^rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d\/,$2) $(filter $(subst *,%,$2),$d))$/;"	m
+sa	include/beacon_parser.h	/^	const uint8_t *sa;$/;"	m	struct:queue_node_arg
+scan_capture_thread	src/scan_pkt.c	/^void scan_capture_thread(void *arg) {$/;"	f
+scan_packet_handler	src/scan_pkt.c	/^void scan_packet_handler(u_char *user, const struct pcap_pkthdr *pkthdr, const u_char *packet) {$/;"	f
+scan_parse_thread	src/scan_pkt.c	/^void scan_parse_thread(u_char *args, const struct pcap_pkthdr *header, const u_char *packet) {$/;"	f
+scan_thread_implement	src/scan_pkt.c	/^u_int8_t scan_thread_implement(char *filter, char *interface, pcap_t *handle,struct fptr *gfptr) {$/;"	f
+sec	include/dbgprint.h	/^	osl_time_t sec;$/;"	m	struct:osl_time
+sequence	include/MtlPktLyzer.h	/^    uint32_t sequence;$/;"	m	struct:tcp_header
+sequence_control	include/MtlPktLyzer.h	/^    uint8_t sequence_control[2];$/;"	m	struct:ieee80211_header
+sequence_number	include/MtlPktLyzer.h	/^    uint16_t sequence_number;$/;"	m	struct:beacon_frame
+setChannel	src/scan_pkt.c	/^int setChannel(const char *interface, int channel) {$/;"	f
+sort_antSignal	src/rssi_extract.c	/^void sort_antSignal()$/;"	f
+source_port	include/MtlPktLyzer.h	/^    uint16_t source_port;$/;"	m	struct:tcp_header
+source_port	include/MtlPktLyzer.h	/^    uint16_t source_port;$/;"	m	struct:udp_header
+ssid	include/beacon_parser.h	/^	char ssid[50];$/;"	m	struct:packet_node
+support_rate	include/beacon_parser.h	/^	float support_rate[8];$/;"	m	struct:packet_node
+suratetag_len	include/beacon_parser.h	/^	uint8_t suratetag_len;$/;"	m	struct:packet_node
+syslog_priority	src/dbgprint.c	/^static int syslog_priority(int level)$/;"	f	file:
+tag_len	include/beacon_parser.h	/^	uint8_t tag_len;$/;"	m	struct:queue_node_arg
+tagged_params	include/beacon_parser.h	/^	const u_char *tagged_params;$/;"	m	struct:queue_node_arg
+tcp_header	include/MtlPktLyzer.h	/^struct tcp_header {$/;"	s
+timer	include/beacon_parser.h	/^	char timer[16];$/;"	m	struct:packet_node
+tmr	include/beacon_parser.h	/^	char *tmr;$/;"	m	struct:queue_node_arg
+transmitter_address	include/MtlPktLyzer.h	/^    uint8_t transmitter_address[6];  \/\/alias of source address$/;"	m	struct:beacon_frame
+transmitter_address	include/MtlPktLyzer.h	/^    uint8_t transmitter_address[ETHER_ADDR_LEN];$/;"	m	struct:ieee80211_header
+type	include/handshake.h	/^    uint8_t type;               \/\/ EAPOL type$/;"	m	struct:__anon3
+type_subtype	include/MtlPktLyzer.h	/^    uint8_t type_subtype;$/;"	m	struct:beacon_frame
+udp_header	include/MtlPktLyzer.h	/^struct udp_header {$/;"	s
+urgent_pointer	include/MtlPktLyzer.h	/^    uint32_t urgent_pointer;$/;"	m	struct:tcp_header
+usec	include/beacon_parser.h	/^	unsigned int usec;$/;"	m	struct:queue_node_arg
+usec	include/dbgprint.h	/^	osl_time_t usec;$/;"	m	struct:osl_time
+version	include/handshake.h	/^    uint8_t version;            \/\/ EAPOL version$/;"	m	struct:__anon3
+window	include/MtlPktLyzer.h	/^    uint16_t window;$/;"	m	struct:tcp_header
