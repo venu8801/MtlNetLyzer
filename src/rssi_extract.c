@@ -43,7 +43,7 @@ void *beacon_capture_thread(void *args)
                 pthread_cond_wait(&captureDone, &beaconMutex);
                 printf("out of wait [cap]\n");
             }
-           // printf("packet capture %d\n", beaconCaptureCount);
+        //    printf("packet capture %d\n", beaconCaptureCount);
             beacon_handler_routine((u_char *)handle, header, packet); // extract the data from beacon
             pthread_mutex_unlock(&beaconMutex);
         }
@@ -162,6 +162,12 @@ void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, cons
             // break;
         }
     }
+    
+  /*calculation to get the channel number on which the packet is transmitted*/
+  const u_char *ds_parameter = support_datarate + 10;
+  const u_char *channel_no = ds_parameter + 2;
+    
+    
     /* copy all the members of structure */
     struct queue_node_arg NodeQueue;
     NodeQueue.tmr = timestr;
@@ -175,6 +181,7 @@ void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, cons
     NodeQueue.data = data;
     NodeQueue.tag_len = tag_len;
     NodeQueue.lsb = lsb;
+    NodeQueue.channel_num = *channel_no;
     insert_beacon_queue(&NodeQueue);
     // printf("insert\n");
 }
@@ -231,6 +238,21 @@ int insert_beacon_queue(struct queue_node_arg *NodeQueue)
     BeaconNode->suratetag_len = NodeQueue->tag_len;
     // printf("insert tag len\n");
     BeaconNode->ant_signal = NodeQueue->ant_signal;
+    BeaconNode->channel_number = NodeQueue->channel_num;
+    
+      //RSN info 
+    const u_char *address;
+    address = NodeQueue->tagged_params;
+
+   for(address;address<(NodeQueue->tagged_params+100);address++)
+   {
+       if(*address == 0x30)  //for RSN info 
+       {
+           BeaconNode->rsn_taglen = (int)(*(address+1));
+           BeaconNode->cipher_type = *(address+7);
+       }
+   }
+    
     BeaconNode->next = NULL;
     // printf("insert ant_sig\n");
     if (rear == NULL)
@@ -296,6 +318,10 @@ void display_packet_queue()
 #endif
         printf("\tSignal: %ddBm", BeaconNode->ant_signal - 256);
         printf("\t  SSID: %s", BeaconNode->ssid);
+        
+         /*if SSID is in hidden mode or not in hidden mode*/
+        (BeaconNode->ssid == NULL) ? printf("\t Hidden SSID"):printf("\t Normal mode");
+        
         printf("\n");
         printf("\tSupported Rates: ");
         for (int i = 0; i < BeaconNode->suratetag_len; i++)
@@ -309,13 +335,44 @@ void display_packet_queue()
         // printf("\tsupported bandwidth is %u\n",temp->bandwidth);
         if (BeaconNode->bandwidth == 0)
         {
-            printf("\tSupports only for 20MHz\n");
+            printf("\tSupports only for 20MHz\t");
         }
         else
         {
 
-            printf("\tSupports 20MHz and 40MHz\n");
+            printf("\tSupports 20MHz and 40MHz\t");
         }
+        printf("\tChannel %d",BeaconNode->channel_number);
+        
+        /*
+           open - No RSN field
+           WPA  - TKIP --> 00-OF-AC-02
+           WPA2 - AES  --> 00-0F-AC-04
+
+           Check Group Cipher Suite type: AES (CCM) (4) field in beacon field 
+        */
+        //printf("RSN tag number is %d\n",temp->rsn_tagno);
+        if(BeaconNode->rsn_taglen<30)
+        {
+            //printf("RSN tag lenght is %d\n",temp->rsn_taglen);
+            //printf("Cipher type is 00-0f-ac-0%x\n",temp->cipher_type);
+            if(BeaconNode->cipher_type==0x2)
+            {
+                printf("\tWPA-TKIP");
+            }
+            else if(BeaconNode->cipher_type==0x04)
+            {
+                printf("\tWPA2-AES");
+            }
+            
+            
+
+        }
+        else //no RSN field 
+        {
+            printf("no RSN field\n");
+        }
+        
         printf("\n");
         printf("\n");
 

@@ -10,6 +10,9 @@ struct packet_node
 	float support_rate[8];
 	uint8_t bandwidth;
 	uint8_t suratetag_len;
+	uint8_t channel_number;
+	uint8_t rsn_taglen;
+	uint8_t cipher_type;
 	struct packet_node *next;
 };
 
@@ -28,7 +31,8 @@ struct queue_node_arg
 	uint8_t *data;
 	uint8_t tag_len;
 	const u_char *lsb;
-
+	const u_char *channel_num;
+	
 };
 
 
@@ -52,7 +56,7 @@ void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf);
  * uses bubble sort
  */
 void sort_antSignal();
-void delete_all_nodes();
+
 #define BEACON_LIMIT 50 /* beacon frames limit */
 #define PARSE_DELAY 5
 #define DELETE_DUPS 1
