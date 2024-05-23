@@ -1,0 +1,808 @@
+globoptind: 2, argc:3
+---------------------------------beacon_capture_thread-----------------------------------------
+capturing packets
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+1 >Timestamp:11:47:02.068378	   BSSID:c0:c7:0a:57:3d:00	Signal: -41dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+2 >Timestamp:11:47:02.069782	   BSSID:c0:c7:0a:57:3d:01	Signal: -41dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+3 >Timestamp:11:47:02.099663	   BSSID:00:d4:9e:a8:2d:ac	Signal: -55dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+4 >Timestamp:11:47:03.472891	   BSSID:02:35:ca:25:c6:0f	Signal: -92dBm	 Normal mode	  SSID: Harisha's M34 5G
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports 20MHz and 40MHz		Channel 48	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+5 >Timestamp:11:47:14.050707	   BSSID:c0:c7:0a:57:3d:01	Signal: -37dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+6 >Timestamp:11:47:14.049272	   BSSID:c0:c7:0a:57:3d:00	Signal: -38dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+7 >Timestamp:11:47:13.978054	   BSSID:00:d4:9e:a8:2d:ac	Signal: -55dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+8 >Timestamp:11:47:26.132562	   BSSID:c0:c7:0a:57:3d:00	Signal: -36dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+9 >Timestamp:11:47:26.134006	   BSSID:c0:c7:0a:57:3d:01	Signal: -36dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+10 >Timestamp:11:47:26.163861	   BSSID:00:d4:9e:a8:2d:ac	Signal: -57dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+11 >Timestamp:11:47:36.285094	   BSSID:74:a2:e6:cf:7d:42	Signal: -90dBm	 Normal mode	  SSID: FortiveMobile
+	Supported Rates: 9.0,   12.0,   18.0,   24.0,   36.0,   48.0,   54.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 5	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+12 >Timestamp:11:47:38.114933	   BSSID:c0:c7:0a:57:3d:01	Signal: -35dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+13 >Timestamp:11:47:38.216155	   BSSID:c0:c7:0a:57:3d:00	Signal: -35dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+14 >Timestamp:11:47:38.147896	   BSSID:00:d4:9e:a8:2d:ac	Signal: -56dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+15 >Timestamp:11:47:50.198303	   BSSID:c0:c7:0a:57:3d:01	Signal: -35dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+16 >Timestamp:11:47:50.299639	   BSSID:c0:c7:0a:57:3d:00	Signal: -36dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+17 >Timestamp:11:47:50.227602	   BSSID:00:d4:9e:a8:2d:ac	Signal: -58dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+18 >Timestamp:11:48:02.280260	   BSSID:c0:c7:0a:57:3d:00	Signal: -36dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+19 >Timestamp:11:48:02.281617	   BSSID:c0:c7:0a:57:3d:01	Signal: -36dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+20 >Timestamp:11:48:02.317196	   BSSID:00:d4:9e:a8:2d:ac	Signal: -57dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+21 >Timestamp:11:48:14.465803	   BSSID:c0:c7:0a:57:3d:00	Signal: -41dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+22 >Timestamp:11:48:14.467272	   BSSID:c0:c7:0a:57:3d:01	Signal: -41dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+23 >Timestamp:11:48:14.393967	   BSSID:00:d4:9e:a8:2d:ac	Signal: -57dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+24 >Timestamp:11:48:26.448202	   BSSID:c0:c7:0a:57:3d:00	Signal: -49dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+25 >Timestamp:11:48:26.449670	   BSSID:c0:c7:0a:57:3d:01	Signal: -49dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+26 >Timestamp:11:48:26.374715	   BSSID:00:d4:9e:a8:2d:ac	Signal: -56dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+27 >Timestamp:11:48:38.531512	   BSSID:c0:c7:0a:57:3d:01	Signal: -39dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+28 >Timestamp:11:48:38.530217	   BSSID:c0:c7:0a:57:3d:00	Signal: -40dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+29 >Timestamp:11:48:38.560376	   BSSID:00:d4:9e:a8:2d:ac	Signal: -54dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+30 >Timestamp:11:48:50.717245	   BSSID:c0:c7:0a:57:3d:01	Signal: -35dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+31 >Timestamp:11:48:50.615643	   BSSID:c0:c7:0a:57:3d:00	Signal: -37dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+32 >Timestamp:11:48:50.541119	   BSSID:00:d4:9e:a8:2d:ac	Signal: -53dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+33 >Timestamp:11:49:02.696871	   BSSID:c0:c7:0a:57:3d:00	Signal: -35dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+34 >Timestamp:11:49:02.698330	   BSSID:c0:c7:0a:57:3d:01	Signal: -35dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+35 >Timestamp:11:49:02.624205	   BSSID:00:d4:9e:a8:2d:ac	Signal: -56dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+36 >Timestamp:11:49:14.781478	   BSSID:c0:c7:0a:57:3d:01	Signal: -38dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+37 >Timestamp:11:49:14.780254	   BSSID:c0:c7:0a:57:3d:00	Signal: -39dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+38 >Timestamp:11:49:14.707865	   BSSID:00:d4:9e:a8:2d:ac	Signal: -57dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+39 >Timestamp:11:49:26.762410	   BSSID:c0:c7:0a:57:3d:01	Signal: -42dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+40 >Timestamp:11:49:26.863777	   BSSID:c0:c7:0a:57:3d:00	Signal: -42dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+41 >Timestamp:11:49:26.790619	   BSSID:00:d4:9e:a8:2d:ac	Signal: -54dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+42 >Timestamp:11:49:38.844224	   BSSID:c0:c7:0a:57:3d:00	Signal: -40dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+43 >Timestamp:11:49:38.845704	   BSSID:c0:c7:0a:57:3d:01	Signal: -40dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+44 >Timestamp:11:49:38.878812	   BSSID:00:d4:9e:a8:2d:ac	Signal: -54dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+45 >Timestamp:11:49:41.835361	   BSSID:9c:a2:f4:68:dd:8c	Signal: -91dBm	 Normal mode	  SSID: OIEPLMRT
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   9.0,   18.0,   36.0,   54.0	[Mbit/sec]
+	Supports 20MHz and 40MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+46 >Timestamp:11:49:50.826577	   BSSID:c0:c7:0a:57:3d:01	Signal: -39dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+47 >Timestamp:11:49:50.927551	   BSSID:c0:c7:0a:57:3d:00	Signal: -39dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+48 >Timestamp:11:49:50.859492	   BSSID:00:d4:9e:a8:2d:ac	Signal: -56dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+49 >Timestamp:11:50:03.012776	   BSSID:c0:c7:0a:57:3d:01	Signal: -39dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+50 >Timestamp:11:50:03.113346	   BSSID:c0:c7:0a:57:3d:00	Signal: -39dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+51 >Timestamp:11:50:03.047061	   BSSID:00:d4:9e:a8:2d:ac	Signal: -56dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+52 >Timestamp:11:50:15.094177	   BSSID:c0:c7:0a:57:3d:00	Signal: -39dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+53 >Timestamp:11:50:15.095640	   BSSID:c0:c7:0a:57:3d:01	Signal: -40dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+54 >Timestamp:11:50:15.128911	   BSSID:00:d4:9e:a8:2d:ac	Signal: -57dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+55 >Timestamp:11:50:23.105760	   BSSID:9c:a2:f4:68:dd:8c	Signal: -91dBm	 Normal mode	  SSID: OIEPLMRT
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   9.0,   18.0,   36.0,   54.0	[Mbit/sec]
+	Supports 20MHz and 40MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+56 >Timestamp:11:50:27.075311	   BSSID:c0:c7:0a:57:3d:00	Signal: -41dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+57 >Timestamp:11:50:26.974151	   BSSID:c0:c7:0a:57:3d:01	Signal: -42dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+58 >Timestamp:11:50:27.001779	   BSSID:00:d4:9e:a8:2d:ac	Signal: -58dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+59 >Timestamp:11:50:39.057465	   BSSID:c0:c7:0a:57:3d:01	Signal: -37dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+60 >Timestamp:11:50:39.158427	   BSSID:c0:c7:0a:57:3d:00	Signal: -37dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+61 >Timestamp:11:50:39.084972	   BSSID:00:d4:9e:a8:2d:ac	Signal: -58dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+62 >Timestamp:11:50:51.140796	   BSSID:c0:c7:0a:57:3d:01	Signal: -40dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+63 >Timestamp:11:50:51.139319	   BSSID:c0:c7:0a:57:3d:00	Signal: -41dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+64 >Timestamp:11:50:51.071132	   BSSID:00:d4:9e:a8:2d:ac	Signal: -59dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+65 >Timestamp:11:51:03.120246	   BSSID:c0:c7:0a:57:3d:00	Signal: -40dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+66 >Timestamp:11:51:03.121651	   BSSID:c0:c7:0a:57:3d:01	Signal: -41dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+67 >Timestamp:11:51:03.046496	   BSSID:00:d4:9e:a8:2d:ac	Signal: -58dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+68 >Timestamp:11:51:15.205005	   BSSID:c0:c7:0a:57:3d:01	Signal: -42dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+69 >Timestamp:11:51:15.305946	   BSSID:c0:c7:0a:57:3d:00	Signal: -42dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+70 >Timestamp:11:51:15.237811	   BSSID:00:d4:9e:a8:2d:ac	Signal: -59dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+71 >Timestamp:11:51:27.288568	   BSSID:c0:c7:0a:57:3d:00	Signal: -40dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+72 >Timestamp:11:51:27.290030	   BSSID:c0:c7:0a:57:3d:01	Signal: -40dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+73 >Timestamp:11:51:27.315474	   BSSID:00:d4:9e:a8:2d:ac	Signal: -60dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+74 >Timestamp:11:51:39.472746	   BSSID:c0:c7:0a:57:3d:00	Signal: -39dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+75 >Timestamp:11:51:39.474333	   BSSID:c0:c7:0a:57:3d:01	Signal: -40dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+76 >Timestamp:11:51:39.398470	   BSSID:00:d4:9e:a8:2d:ac	Signal: -61dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+77 >Timestamp:11:51:51.455460	   BSSID:c0:c7:0a:57:3d:01	Signal: -41dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+78 >Timestamp:11:51:51.555892	   BSSID:c0:c7:0a:57:3d:00	Signal: -42dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+79 >Timestamp:11:51:51.482092	   BSSID:00:d4:9e:a8:2d:ac	Signal: -60dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+80 >Timestamp:11:51:56.185584	   BSSID:9c:a2:f4:68:dd:8c	Signal: -93dBm	 Normal mode	  SSID: OIEPLMRT
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   9.0,   18.0,   36.0,   54.0	[Mbit/sec]
+	Supports 20MHz and 40MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+81 >Timestamp:11:52:03.434449	   BSSID:c0:c7:0a:57:3d:00	Signal: -40dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+82 >Timestamp:11:52:03.435870	   BSSID:c0:c7:0a:57:3d:01	Signal: -40dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+83 >Timestamp:11:52:03.462459	   BSSID:00:d4:9e:a8:2d:ac	Signal: -62dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+84 >Timestamp:11:52:15.519190	   BSSID:c0:c7:0a:57:3d:01	Signal: -40dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+85 >Timestamp:11:52:15.517723	   BSSID:c0:c7:0a:57:3d:00	Signal: -41dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+86 >Timestamp:11:52:15.449886	   BSSID:00:d4:9e:a8:2d:ac	Signal: -58dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+87 >Timestamp:11:52:27.500409	   BSSID:c0:c7:0a:57:3d:01	Signal: -38dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+88 >Timestamp:11:52:27.601010	   BSSID:c0:c7:0a:57:3d:00	Signal: -38dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+89 >Timestamp:11:52:27.533137	   BSSID:00:d4:9e:a8:2d:ac	Signal: -57dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+90 >Timestamp:11:52:39.581912	   BSSID:c0:c7:0a:57:3d:00	Signal: -37dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+91 >Timestamp:11:52:39.583415	   BSSID:c0:c7:0a:57:3d:01	Signal: -37dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+92 >Timestamp:11:52:39.509682	   BSSID:00:d4:9e:a8:2d:ac	Signal: -58dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+93 >Timestamp:11:52:51.563332	   BSSID:c0:c7:0a:57:3d:00	Signal: -35dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+94 >Timestamp:11:52:51.564310	   BSSID:c0:c7:0a:57:3d:01	Signal: -36dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+95 >Timestamp:11:52:51.595181	   BSSID:00:d4:9e:a8:2d:ac	Signal: -59dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+96 >Timestamp:11:53:03.647689	   BSSID:c0:c7:0a:57:3d:00	Signal: -41dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+97 >Timestamp:11:53:03.649111	   BSSID:c0:c7:0a:57:3d:01	Signal: -41dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+98 >Timestamp:11:53:03.571180	   BSSID:00:d4:9e:a8:2d:ac	Signal: -56dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+99 >Timestamp:11:53:15.730081	   BSSID:c0:c7:0a:57:3d:00	Signal: -41dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+100 >Timestamp:11:53:15.732035	   BSSID:c0:c7:0a:57:3d:01	Signal: -41dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+101 >Timestamp:11:53:15.654299	   BSSID:00:d4:9e:a8:2d:ac	Signal: -54dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+102 >Timestamp:11:53:27.711865	   BSSID:c0:c7:0a:57:3d:01	Signal: -39dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+103 >Timestamp:11:53:27.710374	   BSSID:c0:c7:0a:57:3d:00	Signal: -40dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+104 >Timestamp:11:53:27.635150	   BSSID:00:d4:9e:a8:2d:ac	Signal: -58dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx
+signalling parse thread cap count: 351
+waiting till parse completes
+105 >Timestamp:11:53:39.793681	   BSSID:c0:c7:0a:57:3d:00	Signal: -41dBm	 Normal mode	  SSID: MOSCHIP
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+106 >Timestamp:11:53:39.795132	   BSSID:c0:c7:0a:57:3d:01	Signal: -41dBm	 Normal mode	  SSID: MOSHIP-Guest
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+107 >Timestamp:11:53:39.718295	   BSSID:00:d4:9e:a8:2d:ac	Signal: -58dBm	 Normal mode	  SSID: srihari
+	Supported Rates: 1.0,   2.0,   5.5,   11.0,   6.0,   9.0,   12.0,   18.0	[Mbit/sec]
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+All nodes have been deleted.
+----------------------------------------------------------------------------------
+signalling cap thread
+out of wait [cap]
+
+---------------------------------beacon_parser_thread-----------------------------------------
+trying to acquire mtx

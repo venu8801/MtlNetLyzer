@@ -92,6 +92,7 @@ void *beacon_parser_thread(void *args)
 	else if(beaconCaptureCount < PACKET_COUNT_PER_CYCLE){
 		pthread_cond_wait(&captureDone, &beaconMutex);
 	}
+    system("clear");
 #if DELETE_DUPS
         delete_duplicate_packet();
 #endif
@@ -170,6 +171,7 @@ void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, cons
     
     /* copy all the members of structure */
     struct queue_node_arg NodeQueue;
+    memset(&NodeQueue,0,sizeof(struct queue_node_arg));
     NodeQueue.tmr = timestr;
     NodeQueue.usec = usec_value;
     NodeQueue.mac = bf->transmitter_address;
@@ -190,7 +192,7 @@ void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, cons
 int insert_beacon_queue(struct queue_node_arg *NodeQueue)
 {
     // printf("new node\n");
-    struct packet_node *BeaconNode;
+    struct packet_node *BeaconNode = NULL;
     BeaconNode = (struct packet_node *)malloc(1 * sizeof(struct packet_node));
     if (BeaconNode == NULL)
     {
