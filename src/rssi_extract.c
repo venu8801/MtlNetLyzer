@@ -317,11 +317,11 @@ void display_packet_queue()
         printf("%02x", BeaconNode->addr_sa[5]);
 #endif
         printf("\tSignal: %ddBm", BeaconNode->ant_signal - 256);
-        printf("\t  SSID: %s", BeaconNode->ssid);
-        
-         /*if SSID is in hidden mode or not in hidden mode*/
+       
+        /*if SSID is in hidden mode or not in hidden mode*/
         (BeaconNode->ssid == NULL) ? printf("\t Hidden SSID"):printf("\t Normal mode");
-        
+
+	printf("\t  SSID: %s", BeaconNode->ssid);        
         printf("\n");
         printf("\tSupported Rates: ");
         for (int i = 0; i < BeaconNode->suratetag_len; i++)
@@ -370,7 +370,7 @@ void display_packet_queue()
         }
         else //no RSN field 
         {
-            printf("no RSN field\n");
+            printf("\tno RSN field\n");
         }
         
         printf("\n");
