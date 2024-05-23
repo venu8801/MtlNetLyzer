@@ -1,18 +1,20 @@
-1716442665.338711: glob
-1716442665.338714: optind: 2, argc:3
-1716442665.338714: main: Logging in  DEBUG
+1716444022.575011: glob
+1716444022.575017: optind: 2, argc:3
+1716444022.575017: main: Logging in  DEBUG
 
-1716442665.338714: main: Logging in  ERROR
+1716444022.575017: main: Logging in  ERROR
 
-1716442665.338714: main: Logging in  INFO
+1716444022.575018: main: Logging in  INFO
 
-1716442665.338715: main: Logging in  WARNING
+1716444022.575018: main: Logging in  WARNING
 
-1716442665.338715: main: Logging in  DUMP 
+1716444022.575018: main: Logging in  DUMP 
 
-1716442665.383249: beacon parser thread creation in process
-1716442665.383461: -----------beacon capture---------
+1716444022.635287: beacon parser thread creation in process
+1716444022.635501: -----------beacon capture---------
 
-1716442665.383506: -----------beacon capture---------
+1716444022.635539: -----------beacon capture---------
 
-1716442680.767581: Closing function successfullly
+1716444048.471503: -----------beacon capture---------
+
+1716444051.434329: Closing function successfullly

@@ -31,7 +31,7 @@ struct queue_node_arg
 	uint8_t *data;
 	uint8_t tag_len;
 	const u_char *lsb;
-	const u_char *channel_num;
+	 u_char channel_num;
 	
 };
 
