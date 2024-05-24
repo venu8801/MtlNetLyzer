@@ -7,6 +7,7 @@
 #include "dbgprint.h"
 #include <beacon_parser.h>
 #include <stdbool.h>
+#include <pcap/pcap.h>
 pthread_cond_t captureDone = PTHREAD_COND_INITIALIZER;
 pthread_mutex_t beaconMutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -17,7 +18,7 @@ int beacon_count = 1;
 int beaconCaptureCount = 0;
 
 /*captures beacons */
-void *beacon_capture_thread(void *args)
+/*void *beacon_capture_thread(void *args)
 {
     struct pcap_pkthdr *header;
     const u_char *packet;
@@ -49,7 +50,66 @@ void *beacon_capture_thread(void *args)
         }
     }
 }
+*/
+#define NUM_CHANNELS 11  // Number of channels to hop through
+static const uint8_t channels[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
+void *beacon_capture_thread(void *args)
+{
+    const char *interface = "wlp0s20f3";
+    struct pcap_pkthdr *header;
+    const u_char *packet;
+    pcap_t *handle = (pcap_t *)args;
+    int channel_index = 0;  // Start from the first channel
+
+    printf("\n---------------------------------%s-----------------------------------------\n", __func__);
+    dbg_log(MSG_DEBUG, "-----------beacon capture---------\n");
+    printf("capturing packets\n");
+
+    // Capture packets until the timeout or a fixed number of packets is reached
+    while (1)
+    {
+        pthread_mutex_lock(&beaconMutex);
+        if (pcap_next_ex(handle, &header, &packet) == 1)
+        {
+            beaconCaptureCount++;
+            if (beaconCaptureCount > PACKET_COUNT_PER_CYCLE)
+            {
+                printf("signalling parse thread cap count: %d\n", beaconCaptureCount);
+                pthread_cond_signal(&captureDone);
+                printf("waiting till parse completes\n");
+                pthread_cond_wait(&captureDone, &beaconMutex);
+                printf("out of wait [cap]\n");
+            }
+	    printf("packet capture %d\n", beaconCaptureCount);
+
+            beacon_handler_routine((u_char *)handle, header, packet); // extract the data from beacon
+            pthread_mutex_unlock(&beaconMutex);
+        }
+        else
+        {
+            pthread_mutex_unlock(&beaconMutex);
+            usleep(10000); // sleep for 10ms to avoid busy-waiting
+        }
+
+        // Periodically hop channels
+        static time_t last_hop_time = 0;
+        time_t current_time = time(NULL);
+        if (current_time - last_hop_time >= CHANNEL_HOP_INTERVAL)
+        {
+            hop_channel(interface, channels[channel_index]);
+            channel_index = (channel_index + 1) % NUM_CHANNELS; // Hop to the next channel
+            last_hop_time = current_time;
+        }
+    }
+}
+
+
+int hop_channel(const char *interface, int channel) {
+    char cmd[64];
+    sprintf(cmd, "iwconfig %s channel %d", interface, channel);
+    return system(cmd);
+}
 /* call back function which creates thread for beacon parser */
 int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, struct beacon_fptr *bfptr)
 {
@@ -92,7 +152,6 @@ void *beacon_parser_thread(void *args)
 	else if(beaconCaptureCount < PACKET_COUNT_PER_CYCLE){
 		pthread_cond_wait(&captureDone, &beaconMutex);
 	}
-    system("clear");
 #if DELETE_DUPS
         delete_duplicate_packet();
 #endif
@@ -171,7 +230,6 @@ void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, cons
     
     /* copy all the members of structure */
     struct queue_node_arg NodeQueue;
-    memset(&NodeQueue,0,sizeof(struct queue_node_arg));
     NodeQueue.tmr = timestr;
     NodeQueue.usec = usec_value;
     NodeQueue.mac = bf->transmitter_address;
@@ -192,7 +250,7 @@ void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, cons
 int insert_beacon_queue(struct queue_node_arg *NodeQueue)
 {
     // printf("new node\n");
-    struct packet_node *BeaconNode = NULL;
+    struct packet_node *BeaconNode;
     BeaconNode = (struct packet_node *)malloc(1 * sizeof(struct packet_node));
     if (BeaconNode == NULL)
     {
@@ -319,11 +377,12 @@ void display_packet_queue()
         printf("%02x", BeaconNode->addr_sa[5]);
 #endif
         printf("\tSignal: %ddBm", BeaconNode->ant_signal - 256);
-       
         /*if SSID is in hidden mode or not in hidden mode*/
         (BeaconNode->ssid == NULL) ? printf("\t Hidden SSID"):printf("\t Normal mode");
 
-	printf("\t  SSID: %s", BeaconNode->ssid);        
+       	printf("\t  SSID: %s", BeaconNode->ssid);
+        
+        
         printf("\n");
         printf("\tSupported Rates: ");
         for (int i = 0; i < BeaconNode->suratetag_len; i++)
