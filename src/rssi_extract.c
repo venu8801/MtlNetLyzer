@@ -20,41 +20,7 @@ struct packet_node *front = NULL;
 int beacon_count = 1;
 int beaconCaptureCount = 0;
 
-/*captures beacons */
-/*void *beacon_capture_thread(void *args)
-{
-	const char *interface ="wlp0s20f3";
-    struct pcap_pkthdr *header;
-    const u_char *packet;
-    pcap_t *handle = (pcap_t *)args;
-    printf("\n---------------------------------%s-----------------------------------------\n", __func__);
-    dbg_log(MSG_DEBUG, "-----------beacon capture---------\n");
-    printf("capturing packets\n");
-    // Capture packets until the timeout or a fixed number of packets is reached
-    while (1)
-    {
-         pthread_mutex_lock(&beaconMutex);
-        if (pcap_next_ex(handle, &header, &packet) == 1)
-        {
-            
-            //printf("inside while\n");
-            beaconCaptureCount++;
-            //pthread_mutex_lock(&beaconMutex);
-            if (beaconCaptureCount > PACKET_COUNT_PER_CYCLE)
-            {
-                printf("signalling parse thread cap count: %d\n",beaconCaptureCount);
-                pthread_cond_signal(&captureDone);
-                printf("waiting till parse completes\n");
-                pthread_cond_wait(&captureDone, &beaconMutex);
-                printf("out of wait [cap]\n");
-            }
-        //    printf("packet capture %d\n", beaconCaptureCount);
-            beacon_handler_routine((u_char *)handle, header, packet); // extract the data from beacon
-            pthread_mutex_unlock(&beaconMutex);
-        }
 
-    }
-}*/
 #define NUM_CHANNELS 20  // Number of channels to hop through
 static const uint8_t channels[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,36,40,44,48,149,153,157,161,165};
 //static const uint8_t channels[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
@@ -105,47 +71,7 @@ void *beacon_capture_thread(void *args)
             channel_index = (channel_index + 1) % NUM_CHANNELS; // Hop to the next channel
             last_hop_time = current_time;
         }
-   /*      if (current_time - last_hop_time >= CHANNEL_HOP_INTERVAL)
-        {
-            setChannel(interface, channels[channel_index]);
-            channel_index = (channel_index + 1) % NUM_CHANNELS; // Hop to the next channel
-            last_hop_time = current_time;
-        }*/
-    }
-}
-
-/*int setChannel(const char *interface, int channel) {
-    // Calculate the length of the command
-    size_t command_length = snprintf(NULL, 0, "sudo iw dev %s set channel %d", interface, channel) + 1;
-
-    // Allocate memory for the command
-    char *command = (char *)malloc(command_length * sizeof(char));
-
-    if (command == NULL) {
-        perror("Memory allocation failed");
-        return -1; // Return error
-    }
-
-    // Construct the command
-    snprintf(command, command_length, "sudo iw dev %s set channel %d", interface, channel);
-
-    // Execute command
-    int ret = system(command);
-
-    printf("%s \n command ===== \t", command);
-
-    if (ret != 0) {
-        fprintf(stderr, "Failed to set channel %d: %s\n", channel, strerror(errno));
-        dbg_log(MSG_DEBUG, "Failed to set channel %d: %s\n", channel, strerror(errno));
-        free(command); // Free dynamically allocated memory
-        return -1; // Return error
-    }
-
-    // Free dynamically allocated memory
-    free(command);
-
-    return 0; // Success
-}*/
+   
 
 int hop_channel(const char *interface, int channel) {
     char cmd[64];
@@ -153,56 +79,6 @@ int hop_channel(const char *interface, int channel) {
     return system(cmd);
 }
 
-/*
-void *beacon_capture_thread(void *args)
-{
-    struct beacon_thread_args *thread_args = (struct beacon_thread_args *)args;
-  //  pcap_t *handle = thread_args->handle;
-      pcap_t *handle = (pcap_t *)args;
-    const char *interface = "wlp0s20f3";
-    struct pcap_pkthdr *header;
-    const u_char *packet;
-    int channel = 1; // Start from channel 1
-
-    printf("\n---------------------------------%s-----------------------------------------\n", __func__);
-    dbg_log(MSG_DEBUG, "-----------beacon capture---------\n");
-    printf("capturing packets\n");
-
-    // Capture packets until the timeout or a fixed number of packets is reached
-    while (1)
-    {
-        pthread_mutex_lock(&beaconMutex);
-        if (pcap_next_ex(handle, &header, &packet) == 1)
-        {
-            beaconCaptureCount++;
-            if (beaconCaptureCount > PACKET_COUNT_PER_CYCLE)
-            {
-                printf("signalling parse thread cap count: %d\n", beaconCaptureCount);
-                pthread_cond_signal(&captureDone);
-                printf("waiting till parse completes\n");
-                pthread_cond_wait(&captureDone, &beaconMutex);
-                printf("out of wait [cap]\n");
-            }
-            beacon_handler_routine((u_char *)handle, header, packet); // extract the data from beacon
-            pthread_mutex_unlock(&beaconMutex);
-        }
-        else
-        {
-            pthread_mutex_unlock(&beaconMutex);
-            usleep(10000); // sleep for 10ms to avoid busy-waiting
-        }
-
-        // Periodically hop channels
-        static time_t last_hop_time = 0;
-        time_t current_time = time(NULL);
-        if (current_time - last_hop_time >= CHANNEL_HOP_INTERVAL)
-        {
-            hop_channel(interface, channel);
-            channel = (channel % NUM_CHANNELS) + 1; // Hop to the next channel
-            last_hop_time = current_time;
-        }
-    }
-}*/
 
 /* call back function which creates thread for beacon parser */
 int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, struct beacon_fptr *bfptr)
