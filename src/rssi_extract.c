@@ -8,8 +8,12 @@
 #include "dbgprint.h"
 #include <beacon_parser.h>
 #include <stdbool.h>
+<<<<<<< HEAD
 #include <errno.h>
 //#include <scan.h>
+=======
+#include <pcap/pcap.h>
+>>>>>>> c181b31f2d6c9853f56f83a879ee9610849c37e2
 pthread_cond_t captureDone = PTHREAD_COND_INITIALIZER;
 pthread_mutex_t beaconMutex = PTHREAD_MUTEX_INITIALIZER;
 //int channel=1;
@@ -20,12 +24,17 @@ struct packet_node *front = NULL;
 int beacon_count = 1;
 int beaconCaptureCount = 0;
 
+<<<<<<< HEAD
 
 #define NUM_CHANNELS 20  // Number of channels to hop through
 static const uint8_t channels[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,36,40,44,48,149,153,157,161,165};
 //static const uint8_t channels[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
 void *beacon_capture_thread(void *args)
+=======
+/*captures beacons */
+/*void *beacon_capture_thread(void *args)
+>>>>>>> c181b31f2d6c9853f56f83a879ee9610849c37e2
 {
     const char *interface = "wlp0s20f3";
     struct pcap_pkthdr *header;
@@ -78,8 +87,70 @@ int hop_channel(const char *interface, int channel) {
     sprintf(cmd, "sudo iwconfig %s channel %d", interface, channel);
     return system(cmd);
 }
+*/
+#define NUM_CHANNELS 11  // Number of channels to hop through
+static const uint8_t channels[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+
+void *beacon_capture_thread(void *args)
+{
+    const char *interface = "wlp0s20f3";
+    struct pcap_pkthdr *header;
+    const u_char *packet;
+    pcap_t *handle = (pcap_t *)args;
+    int channel_index = 0;  // Start from the first channel
+
+    printf("\n---------------------------------%s-----------------------------------------\n", __func__);
+    dbg_log(MSG_DEBUG, "-----------beacon capture---------\n");
+    printf("capturing packets\n");
+
+<<<<<<< HEAD
+
+=======
+    // Capture packets until the timeout or a fixed number of packets is reached
+    while (1)
+    {
+        pthread_mutex_lock(&beaconMutex);
+        if (pcap_next_ex(handle, &header, &packet) == 1)
+        {
+            beaconCaptureCount++;
+            if (beaconCaptureCount > PACKET_COUNT_PER_CYCLE)
+            {
+                printf("signalling parse thread cap count: %d\n", beaconCaptureCount);
+                pthread_cond_signal(&captureDone);
+                printf("waiting till parse completes\n");
+                pthread_cond_wait(&captureDone, &beaconMutex);
+                printf("out of wait [cap]\n");
+            }
+	    printf("packet capture %d\n", beaconCaptureCount);
+
+            beacon_handler_routine((u_char *)handle, header, packet); // extract the data from beacon
+            pthread_mutex_unlock(&beaconMutex);
+        }
+        else
+        {
+            pthread_mutex_unlock(&beaconMutex);
+            usleep(10000); // sleep for 10ms to avoid busy-waiting
+        }
+
+        // Periodically hop channels
+        static time_t last_hop_time = 0;
+        time_t current_time = time(NULL);
+        if (current_time - last_hop_time >= CHANNEL_HOP_INTERVAL)
+        {
+            hop_channel(interface, channels[channel_index]);
+            channel_index = (channel_index + 1) % NUM_CHANNELS; // Hop to the next channel
+            last_hop_time = current_time;
+        }
+    }
+}
 
 
+int hop_channel(const char *interface, int channel) {
+    char cmd[64];
+    sprintf(cmd, "iwconfig %s channel %d", interface, channel);
+    return system(cmd);
+}
+>>>>>>> c181b31f2d6c9853f56f83a879ee9610849c37e2
 /* call back function which creates thread for beacon parser */
 int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, struct beacon_fptr *bfptr)
 {
@@ -346,11 +417,12 @@ void display_packet_queue()
         printf("%02x", BeaconNode->addr_sa[5]);
 #endif
         printf("\tSignal: %ddBm", BeaconNode->ant_signal - 256);
-       
         /*if SSID is in hidden mode or not in hidden mode*/
         (BeaconNode->ssid == NULL) ? printf("\t Hidden SSID"):printf("\t Normal mode");
 
-	printf("\t  SSID: %s", BeaconNode->ssid);        
+       	printf("\t  SSID: %s", BeaconNode->ssid);
+        
+        
         printf("\n");
         printf("\tSupported Rates: ");
         for (int i = 0; i < BeaconNode->suratetag_len; i++)

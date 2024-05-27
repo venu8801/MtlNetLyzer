@@ -35,10 +35,14 @@ struct queue_node_arg
 	
 };
 
+<<<<<<< HEAD
 
 
 #define CHANNEL_HOP_INTERVAL 2
 
+=======
+#define CHANNEL_HOP_INTERVAL 2
+>>>>>>> c181b31f2d6c9853f56f83a879ee9610849c37e2
 struct beacon_fptr{
 void* (*bfill_fptr)(void *);
 void* (*bparse_fptr)(void *);
@@ -62,14 +66,22 @@ void delete_all_nodes() ;
 // void shift_channel(pcap_t *handle);
  
 void sort_antSignal();
+<<<<<<< HEAD
 
 
 int hop_channel(const char *interface, int channel);
 
 //int setChannel(const char *interface, int channel) ;
+=======
+int hop_channel(const char *interface, int channel);
+>>>>>>> c181b31f2d6c9853f56f83a879ee9610849c37e2
 #define BEACON_LIMIT 50 /* beacon frames limit */
 #define PARSE_DELAY 5
 #define DELETE_DUPS 1
 #define BEACON_EXTRA_INFO  0 /* adds extra info into
 								beacon node*/
+<<<<<<< HEAD
 #define PACKET_COUNT_PER_CYCLE 10
+=======
+#define PACKET_COUNT_PER_CYCLE 50
+>>>>>>> c181b31f2d6c9853f56f83a879ee9610849c37e2

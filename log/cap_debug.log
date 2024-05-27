@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1716792542.561203: glob
 1716792542.561213: optind: 2, argc:3
 1716792542.561214: main: Logging in  DEBUG
@@ -46,3 +47,5 @@
 1716792634.881612: -----------beacon capture---------
 
 1716794260.433636: Closing function successfullly
+=======
+>>>>>>> c181b31f2d6c9853f56f83a879ee9610849c37e2
