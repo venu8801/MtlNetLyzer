@@ -36,6 +36,7 @@ struct radiotap_header {
     uint8_t it_pad;
     uint16_t it_len;
     uint32_t it_present;
+    int channel_frequency;
      /*---------more members 
      * can be 
      * added -------------*/

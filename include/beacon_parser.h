@@ -36,6 +36,9 @@ struct queue_node_arg
 };
 
 
+
+#define CHANNEL_HOP_INTERVAL 2
+
 struct beacon_fptr{
 void* (*bfill_fptr)(void *);
 void* (*bparse_fptr)(void *);
@@ -55,11 +58,18 @@ void delete_all_nodes() ;
 /* sorts based on antenna signal
  * uses bubble sort
  */
+ 
+// void shift_channel(pcap_t *handle);
+ 
 void sort_antSignal();
 
+
+int hop_channel(const char *interface, int channel);
+
+//int setChannel(const char *interface, int channel) ;
 #define BEACON_LIMIT 50 /* beacon frames limit */
 #define PARSE_DELAY 5
 #define DELETE_DUPS 1
 #define BEACON_EXTRA_INFO  0 /* adds extra info into
 								beacon node*/
-#define PACKET_COUNT_PER_CYCLE 350
+#define PACKET_COUNT_PER_CYCLE 10

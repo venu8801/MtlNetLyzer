@@ -1,50 +1,48 @@
-1716448393.186361: glob
-1716448393.186364: optind: 2, argc:3
-1716448393.186364: main: Logging in  DEBUG
+1716792542.561203: glob
+1716792542.561213: optind: 2, argc:3
+1716792542.561214: main: Logging in  DEBUG
 
-1716448393.186365: main: Logging in  ERROR
+1716792542.561215: main: Logging in  ERROR
 
-1716448393.186365: main: Logging in  INFO
+1716792542.561215: main: Logging in  INFO
 
-1716448393.186365: main: Logging in  WARNING
+1716792542.561215: main: Logging in  WARNING
 
-1716448393.186365: main: Logging in  DUMP 
+1716792542.561216: main: Logging in  DUMP 
 
-1716448393.233144: beacon parser thread creation in process
-1716448393.233351: -----------beacon capture---------
+1716792542.603718: beacon parser thread creation in process
+1716792542.603998: -----------beacon capture---------
 
-1716448393.233393: -----------beacon capture---------
+1716792542.604054: -----------beacon capture---------
 
-1716448405.592940: -----------beacon capture---------
+1716792560.183692: -----------beacon capture---------
 
-1716448412.880927: -----------beacon capture---------
+1716792565.184223: -----------beacon capture---------
 
-1716448420.064915: -----------beacon capture---------
+1716792570.184584: -----------beacon capture---------
 
-1716448427.353070: -----------beacon capture---------
+1716792575.185032: -----------beacon capture---------
 
-1716448434.633176: -----------beacon capture---------
+1716792580.185521: -----------beacon capture---------
 
-1716448441.912999: -----------beacon capture---------
+1716792585.186081: -----------beacon capture---------
 
-1716448449.193191: -----------beacon capture---------
+1716792590.186474: -----------beacon capture---------
 
-1716448456.473066: -----------beacon capture---------
+1716792595.186880: -----------beacon capture---------
 
-1716448463.653186: -----------beacon capture---------
+1716792600.187300: -----------beacon capture---------
 
-1716448470.932776: -----------beacon capture---------
+1716792605.187715: -----------beacon capture---------
 
-1716448478.213133: -----------beacon capture---------
+1716792614.879289: -----------beacon capture---------
 
-1716448485.393136: -----------beacon capture---------
+1716792619.880262: -----------beacon capture---------
 
-1716448492.573035: -----------beacon capture---------
+1716792624.880816: -----------beacon capture---------
 
-1716448499.969024: -----------beacon capture---------
+1716792629.881226: -----------beacon capture---------
 
-1716448507.152984: -----------beacon capture---------
+1716792634.881612: -----------beacon capture---------
 
-1716448514.433310: -----------beacon capture---------
-
-1716448517.845054: Closing function successfullly
+1716794260.433636: Closing function successfullly
