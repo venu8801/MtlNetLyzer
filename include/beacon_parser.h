@@ -49,8 +49,8 @@ void *beacon_parser_thread(void *args);
 void *beacon_capture_thread(void *args);
 void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *hdr, const u_char *bytes);
 // Function to create a node for storing beacon packet information
-int insert_beacon_queue(struct queue_node_arg *);
-void display_packet_queue();
+//int insert_beacon_queue(struct queue_node_arg *);
+
 void delete_duplicate_packet();
 // Function to extract SSID
 void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf);
@@ -58,16 +58,17 @@ void delete_all_nodes() ;
 /* sorts based on antenna signal
  * uses bubble sort
  */
- 
+int insert_beacon_queue(struct queue_node_arg *NodeQueue);
+void insert_non_duplicate_node(struct packet_node *node);
 
-void sort_antSignal();
+void sort_antSignal(struct packet_node *non_duplicate_nodes);
 uint8_t extract_channel(const u_char *packet);
 
 void switch_channel(const char *interface, int channel);
 
+void display_packet_queue(struct packet_node *non_duplicate_nodes);
 
-
-
+//bool is_duplicate_in_structure(struct packet_node *node);
 #define BEACON_LIMIT 50 /* beacon frames limit */
 #define PARSE_DELAY 2
 #define DELETE_DUPS 1
