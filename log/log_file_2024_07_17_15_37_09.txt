@@ -1,0 +1,2 @@
+globstring:beacon 
+Couldn't parse filter_exp Unknown Type and subtype: can't parse filter expression: syntax error

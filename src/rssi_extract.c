@@ -1,114 +1,129 @@
-// parses radiotap info
 
-// #include <beacon_parser.h>
 #include <sys/types.h>
 #include "MtlPktLyzer.h"
 #include "func_dec.h"
-#include "dbgprint.h"
 #include <beacon_parser.h>
 #include <stdbool.h>
 #include <scan.h>
+#include "logger.h"
+
+extern FILE *logfile;
+
 pthread_cond_t captureDone = PTHREAD_COND_INITIALIZER;
 pthread_mutex_t beaconMutex = PTHREAD_MUTEX_INITIALIZER;
-
-
-// New structure is added here
-static struct packet_node *non_duplicate_nodes = NULL;
-// Define a structure to store non-duplicate nodes
-struct non_duplicate_nodes {
-	struct packet_node *node;
-	struct non_duplicate_nodes *next;
-};
-
-// Declare a pointer to the head of the non-duplicate nodes structure
-struct non_duplicate_nodes *non_duplicate_head = NULL;
 
 
 /* beacon queue nodes*/
 struct packet_node *rear = NULL;
 struct packet_node *front = NULL;
-int beacon_count = 1;
-int beaconCaptureCount = 0;
 
-int channels_2ghz_5ghz[] = {1,2,3,4,5,6,7,8,9,10,11,36,40,44,48,149,153,157,161,165};
-//int channels_5ghz[] = {36,40,44,48,149,153,157,161,165};
+int beacon_count = 1;
+int beaconCaptureCount = INTIALIZATION_VAL;
+
+/*channels description for 2.4 and 5ghz */
+
+//int channels_2ghz_5ghz[] = {1,2,3,4,5,6,7,8,9,10,11,36,40,44,48,149,153,157,161,165};
+
+
+/* Static structure to hold sorted beacon packet information */
+#define MAX_PACKETS 30  // Define the maximum number of packets the static structure can hold
+struct static_beacon_node {
+    char timer[16];
+    long microsec;
+    uint8_t addr[6];
+    char ssid[32];
+    uint8_t addr_da[6];
+    uint8_t addr_sa[6];
+    float support_rate[16];
+    uint8_t suratetag_len;
+    int ant_signal;
+    uint8_t bandwidth;
+    int channel_number;
+    uint8_t rsn_taglen;
+    uint8_t cipher_type;
+} sorted_beacon_nodes[MAX_PACKETS];
+int sorted_beacon_count = 0;
+
+
 
 /*Funtion to switch channels*/
 
-void switch_channel(const char *interface, int channel) {
+void switch_channel(const char *interface, int channel) 
+{
 	char command[100];
 	snprintf(command, sizeof(command), "sudo iw dev %s set channel %d", interface, channel);
 	system(command);
-	dbg_log(MSG_DEBUG, "Switched to channel %d on interface %s\n", channel, interface);
 }
 
+/*capturing beacon thread*/
 
 void *beacon_capture_thread(void *args)
 {
     struct pcap_pkthdr *header;
     const u_char *packet;
     pcap_t *handle = (pcap_t *)args;
-    printf("\n---------------------------------%s-----------------------------------------\n", __func__);
-    dbg_log(MSG_DEBUG, "-----------beacon capture---------\n");
-    printf("capturing packets\n");
+   log_printf(logfile, "\n---------------------------------%s-----------------------------------------\n", __func__);
+   log_printf(logfile, "capturing packets\n");
 
-    // Set the timeout for pcap handle outside the loop as it is applied for each packet capture attempt
+    /* Set the timeout for pcap handle outside the loop as it is applied for each packet capture attempt */
     pcap_set_timeout(handle, TIMEOUT_MS);
 
     while (1)
     {
         for (int i = 0; i < sizeof(channels_2ghz_5ghz) / sizeof(int); i++)
         {
-            int packetsCapturedOnCurrentChannel = 0;
+            int packetsCapturedOnCurrentChannel = INTIALIZATION_VAL;
             time_t startTime = time(NULL);
 
-            // Switch to the next channel
+            /* Switch to the next channel */
             switch_channel(INTERFACE, channels_2ghz_5ghz[i]);
             sleep(CHANNEL_SWITCH_INTERVAL);
 
             while (packetsCapturedOnCurrentChannel < PACKETS_PER_CHANNEL)
             {
-                // Lock the mutex before attempting to capture packets
+                /*Lock the mutex before attempting to capture packets */
                 pthread_mutex_lock(&beaconMutex);
 
                 int res = pcap_next_ex(handle, &header, &packet);
-                if (res == 1)  // Successfully captured a packet
+                if (res == 1)  /* Successfully captured a packet */
                 {
                     beaconCaptureCount++;
                     packetsCapturedOnCurrentChannel++;
 
                     if (beaconCaptureCount > PACKET_COUNT_PER_CYCLE)
                     {
-                        printf("signalling parse thread cap count: %d\n", beaconCaptureCount);
+                        log_printf(logfile, "signalling parse thread cap count: %d\n", beaconCaptureCount);
                         pthread_cond_signal(&captureDone);
-                        printf("waiting till parse completes\n");
+                        log_printf(logfile, "waiting till parse completes\n");
                         pthread_cond_wait(&captureDone, &beaconMutex);
-                        printf("out of wait [cap]\n");
-                        beaconCaptureCount = 0;
+                        log_printf(logfile, "out of wait [cap]\n");
+                        beaconCaptureCount = INTIALIZATION_VAL;
                     }
 
-              //      printf("packet capture %d\n", beaconCaptureCount);
-                    beacon_handler_routine((u_char *)handle, header, packet); // Extract the data from beacon
+              /*    printf("packet capture %d\n", beaconCaptureCount);*/
+              
+               /* Extract the data from beacon  */
+                    beacon_handler_routine((u_char *)handle, header, packet);
                 }
-                else if (res == PCAP_ERROR || res == PCAP_ERROR_BREAK)  // Handle errors
+                /* Handle errors */
+                else if (res == PCAP_ERROR || res == PCAP_ERROR_BREAK)  
                 {
-                    printf("Error or break in pcap capture\n");
+                    log_printf(logfile, "Error or break in pcap capture\n");
                     pthread_mutex_unlock(&beaconMutex);
                     break;
                 }
 
-                // Unlock the mutex after handling the packet
+                /* Unlock the mutex after handling the packet */
                 pthread_mutex_unlock(&beaconMutex);
 
-                // Break if no packet is captured within 1 second
-                if (time(NULL) - startTime >= 1)
+                /* Break if no packet is captured within 1 second */
+                if (time(NULL) - startTime >= TIMEOUT_PAC_CAP)
                 {
-              //      printf("No packet captured on channel %d within 1 second, switching channel\n", channels_2ghz_5ghz[i]);
                     break;
                 }
 
-                // Small sleep to prevent tight looping
-                usleep(100);
+                /* Small sleep to prevent tight looping */
+               usleep(100);
             }
         }
     }
@@ -119,61 +134,60 @@ void *beacon_capture_thread(void *args)
 /* call back function which creates thread for beacon parser */
 int beacon_thread_implement(const char *filter_exp, char *interface, pcap_t *handle, struct beacon_fptr *bfptr)
 {
-	// printf("\nInside beacon thread implement\n");
 	struct bpf_program fp;
 	pthread_t beacon_parser_id, beacon_capture_id;
-	dbg_log(MSG_DEBUG, "beacon parser thread creation in process");
 	if ((pthread_create(&beacon_capture_id, NULL, bfptr->bfill_fptr, (void *)handle) != 0) ||
 			(pthread_create(&beacon_parser_id, NULL, bfptr->bparse_fptr, (void *)handle) != 0))
 	{
 		fprintf(stderr, "Error creating beacon parser thread\n");
-		dbg_log(MSG_DEBUG, "Error creating beacon parser thread\n");
-		pcap_freecode(&fp); // Free the compiled filter
-		pcap_close(handle); // Close pcap handle
+		pcap_freecode(&fp); /*Free the compiled filter*/
+		pcap_close(handle); /* Close pcap handle  */
 		return EXIT_FAILURE;
 	}
 
-	// Wait for the packet capture thread to finish
+	/* Wait for the packet capture thread to finish */
 	pthread_join(beacon_capture_id, NULL);
 	pthread_join(beacon_parser_id, NULL);
 }
 
-void *beacon_parser_thread(void *args) {
+/* printing thread for the beacon  */
+
+void *beacon_parser_thread(void *args) 
+{
     pcap_t *handle = (pcap_t *)args;
-    while (1) {
-        printf("\n---------------------------------%s-----------------------------------------\n", __func__);
-        dbg_log(MSG_DEBUG, "-----------beacon capture---------\n");
-        printf("Trying to acquire mutex in parser thread\n");
+    while (1)
+     {
+        log_printf(logfile, "\n---------------%s---------------------------------\n",__func__);
+        log_printf(logfile, "Trying to acquire mutex in parser thread\n");
         pthread_mutex_lock(&beaconMutex);
-        if (rear == NULL) {
-            printf("Waiting for capture thread (rear is NULL)\n");
+        if (rear == NULL) 
+        {
+            log_printf(logfile, "Waiting for capture thread (rear is NULL)\n");
             pthread_cond_wait(&captureDone, &beaconMutex);
-            printf("Out of wait (rear is NULL) [parse]\n");
-        } else if (beaconCaptureCount < PACKET_COUNT_PER_CYCLE) {
-            printf("Waiting for capture thread (not enough packets)\n");
+        } 
+        else if (beaconCaptureCount < PACKET_COUNT_PER_CYCLE) 
+        {
+            log_printf(logfile, "Waiting for capture thread (not enough packets)\n");
             pthread_cond_wait(&captureDone, &beaconMutex);
-            printf("Out of wait (not enough packets) [parse]\n");
         }
         
 #if DELETE_DUPS
         delete_duplicate_packet();
 #endif
-        //sort_antSignal();
-        sort_antSignal(non_duplicate_nodes);
-        display_packet_queue(non_duplicate_nodes);
-        printf("Signalling capture thread\n");
+      system("clear");
+        sort_antSignal();
+        display_sorted_beacon_nodes();
+        log_printf(logfile, "Signalling capture thread\n");
         pthread_cond_signal(&captureDone);
         pthread_mutex_unlock(&beaconMutex);
-        printf("Mutex released in parser thread\n");
+        log_printf(logfile, "Mutex released in parser thread\n");
         sleep(PARSE_DELAY);
     }
 }
 
-void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, const u_char *bytes)
+/* beacon handle thread */
+void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, const u_char *bytes) //inputs for this function are user info  ,len ,time, bytes
 {
-
-	// printf("Inside %s\n",__func__);
-
 	struct radiotap_header *rth = (struct radiotap_header *)(bytes);
 	int header_len = rth->it_len;
 	struct tm *ltime;
@@ -187,456 +201,399 @@ void beacon_handler_routine(u_char *user, const struct pcap_pkthdr *header, cons
 
 	struct beacon_frame *bf = (struct beacon_frame *)(bytes + header_len);
 
-	// Pointer to the start of the IEEE 802.11 header, right after the Radiotap header
+	/* Pointer to the start of the IEEE 802.11 header, right after the Radiotap header */
 	const uint8_t *ieee80211_header = bytes + header_len;
 
-	// Destination Address is the first address field in the 802.11 header for management frames
-	const uint8_t *da = ieee80211_header + 4; // Skipping Frame Control (2 bytes) and Duration (2 bytes)
+	/* Destination Address is the first address field in the 802.11 header for management frames */
+	const uint8_t *da = ieee80211_header + FRAME_DUR_BYTES; // Skipping Frame Control (2 bytes) and Duration (2 bytes)
 
-	// Source Address
-	const uint8_t *sa = ieee80211_header + 4 + 6; // Skipping Frame Control (2 bytes), Duration (2 bytes), and DA (6 bytes)
+	/*Source Address */
+	const uint8_t *sa = ieee80211_header + FRAME_DUR_BYTES + DESTINATION_BYTES; // Skipping Frame Control (2 bytes), Duration (2 bytes), and DA (6 bytes)
 
-	// Extract SSID from tagged parameters
-	const u_char *tagged_params = bytes + header_len + 24 + 12;
-	size_t params_length = header->caplen - (header_len + 24 + 12);
+	/* Extract SSID from tagged parameters */
+	const u_char *tagged_params = bytes + header_len + SSID_TAG_PARM + SSID_PARM_LEN;
+	size_t params_length = header->caplen - (header_len + SSID_TAG_PARM + SSID_PARM_LEN);
 
-	// Antenna signal strength at 30th byte
-	uint8_t *rssi_ptr = (uint8_t *)(bytes + 30);
+	/* Antenna signal strength at 30th byte */
+	uint8_t *rssi_ptr = (uint8_t *)(bytes + RSN_VAL);
 	int16_t rssi = (int16_t)(*rssi_ptr);
 
-	const u_char *support_datarate = tagged_params + *(tagged_params + 1) + 2;
-	uint8_t tag_len = *(support_datarate + 1);
+	const u_char *support_datarate = tagged_params + *(tagged_params + TAG_PARM_BYTES) + TAG_PARM_MOV_BYTE; /* TAG_PARM_MOV_BYTE=2 it helps for shifting the bytes to extarct supported rates */ 
+	uint8_t tag_len = *(support_datarate + RSN_TAG_VAL);
 	uint8_t data[tag_len];
-	uint16_t ele_id = 0x32;
-	int i = 0;
-	float support_rate[16];
-	for (i = 0; i < tag_len; i++)
+	uint16_t ele_id = ELE_ID;
+	int i = INTIALIZATION_VAL;
+	float support_rate[SUPPORT_RATE_SIZE];
+	for (i = INTIALIZATION_VAL; i < tag_len; i++)
 	{
-		data[i] = (int)*(support_datarate + 2 + i);
+		data[i] = (int)*(support_datarate + DATA_OFFSET + i);
 	}
 
-	const u_char *k, *j;
-	const u_char *lsb = NULL;
+	const u_char *k=NULL, *j=NULL;
+	const u_char *lsb=NULL ;
 	k = support_datarate;
-	j = k + 100;
+	j = k + SEARCH_RANGE;
 	for (k; k < j; k++)
 	{
-		if (*k == 0x2d)
+		if (*k == SEARCH_BYTE)
 		{
-			lsb = (k + 2);
-			// break;
+			lsb = (k + TAG_PARM_MOV_BYTE);
 		}
 	}
 
-	
+/* extarcting the channel number from frequency  */	
 uint8_t  channel_no = extract_channel(bytes);
 
-	/* copy all the members of structure */
-	struct queue_node_arg NodeQueue;
-	memset(&NodeQueue,0,sizeof(struct queue_node_arg));
-	NodeQueue.tmr = timestr;
-	NodeQueue.usec = usec_value;
-	NodeQueue.mac = bf->transmitter_address;
-	NodeQueue.tagged_params = tagged_params;
-	NodeQueue.length = params_length;
-	NodeQueue.da = da;
-	NodeQueue.sa = sa;
-	NodeQueue.ant_signal = rssi;
-	NodeQueue.data = data;
-	NodeQueue.tag_len = tag_len;
+    
+    /* copy all the members of structure */
+    struct queue_node_arg NodeQueue;
+    NodeQueue.tmr = timestr;
+    NodeQueue.usec = usec_value;
+    NodeQueue.mac = bf->transmitter_address;
+    NodeQueue.tagged_params = tagged_params;
+    NodeQueue.length = params_length;
+    NodeQueue.da = da;
+    NodeQueue.sa = sa;
+    NodeQueue.ant_signal = rssi;
+    NodeQueue.data = data;
+    NodeQueue.tag_len = tag_len;
+    if (lsb != NULL)
+    {
         NodeQueue.lsb = lsb;
         NodeQueue.channel_num = channel_no; // Assuming lsb is a single byte, adjust as needed
         insert_beacon_queue(&NodeQueue);
-    
+    }
 }
 
-// Function to create a node for storing beacon packet information
+
+
+/* Function to create a node for storing beacon packet information */
 int insert_beacon_queue(struct queue_node_arg *NodeQueue)
 {
-	if (NodeQueue == NULL || NodeQueue->lsb == NULL) {
-       // printf(" NodeQueue or NodeQueue->lsb is NULL\n");
+    struct packet_node *BeaconNode;
+    BeaconNode = (struct packet_node *)malloc(1 * sizeof(struct packet_node));
+    if (BeaconNode == NULL)
+    {
+        log_printf(logfile, "Memory not allocated\n");
         return -1;
     }
-	
-	struct packet_node *BeaconNode = (struct packet_node *)malloc(1 * sizeof(struct packet_node));
-	if (BeaconNode == NULL)
-	{
-		printf("Memory not allocated\n");
-		return -1;
-	}
-	memset(BeaconNode, 0, sizeof(struct packet_node));
-
-	
-	// printf("malloc-s\n");
-	//  Copy the time string to the timer field
-	strcpy(BeaconNode->timer, NodeQueue->tmr);
-	// printf("insert strcpy\n");
-	BeaconNode->microsec = NodeQueue->usec;
-	for (int i = 0; i < 6; i++)
-	{
-		BeaconNode->addr[i] = NodeQueue->mac[i];
-	}
-	// printf("insert mac addr\n");
-	//  Copying SSID
-	copy_ssid(NodeQueue->tagged_params, NodeQueue->tag_len, BeaconNode->ssid);
-
-	// Destination Address
-	for (int i = 0; i < 6; i++)
-	{
-		BeaconNode->addr_da[i] = NodeQueue->da[i];
-	}
-	// printf("insert da\n");
-	//  Source Address
-	for (int i = 0; i < 6; i++)
-	{
-		BeaconNode->addr_sa[i] = NodeQueue->sa[i];
-	}
-	// printf("insert sa\n");
-	/*support data rate*/
-	for (int i = 0; i < NodeQueue->tag_len; i++)
-	{
-		// Extract rate from data and convert to Mbps
-		uint8_t rate = NodeQueue->data[i] & 0x7F; // Mask out the MSB, which indicates basic rate
-		float rate_mbps = (float)rate / 2.0;
-
-		BeaconNode->support_rate[i] = rate_mbps;
-	}
-	// printf("insert su rate\n");
-	/*bandwidth calculation*/
-	
-	//potential error
-	//BeaconNode->bandwidth = (*(NodeQueue->lsb) & 0x02);
-	
-	// Check NodeQueue->lsb before dereferencing it
-    if (NodeQueue->lsb != NULL) {
-        BeaconNode->bandwidth = (*(NodeQueue->lsb) & 0x02);
-    } else {
-        printf("Error: NodeQueue->lsb is NULL\n");
-        free(BeaconNode); // Free allocated memory before returning
-        return -1;
+    
+    /*  Copy the time string to the timer field*/
+    strcpy(BeaconNode->timer, NodeQueue->tmr);
+    
+  
+    BeaconNode->microsec = NodeQueue->usec;
+    for (int i = INTIALIZATION_VAL; i < ITERATING_INSERT_LOOP_VAL; i++)
+    {
+        BeaconNode->addr[i] = NodeQueue->mac[i];
     }
-	
-	// printf("insert band\n");
-	BeaconNode->suratetag_len = NodeQueue->tag_len;
-	// printf("insert tag len\n");
-	BeaconNode->ant_signal = NodeQueue->ant_signal;
-	BeaconNode->channel_number = NodeQueue->channel_num;
+     /* Copying SSID */
+    copy_ssid(NodeQueue->tagged_params, NodeQueue->tag_len, BeaconNode->ssid);
 
-	//RSN info 
-	const u_char *address;
-	address = NodeQueue->tagged_params;
+    /* Destination Address */
+    for (int i = INTIALIZATION_VAL; i < ITERATING_INSERT_LOOP_VAL; i++)
+    {
+        BeaconNode->addr_da[i] = NodeQueue->da[i];
+    }
+   
+    /*  Source Address */
+    for (int i = INTIALIZATION_VAL; i < ITERATING_INSERT_LOOP_VAL; i++)
+    {
+        BeaconNode->addr_sa[i] = NodeQueue->sa[i];
+    }
+   
+    /*support data rate*/
+    for (int i = INTIALIZATION_VAL; i < NodeQueue->tag_len; i++)
+    {
+        /* Extract rate from data and convert to Mbps */
+        uint8_t rate = NodeQueue->data[i] & BASIC_RATE_MASK; // Mask out the MSB, which indicates basic rate
+        float rate_mbps = (float)rate / RATE_DIVISOR;
 
-	for(address;address<(NodeQueue->tagged_params+100);address++)
-	{
-		if(*address == 0x30)  //for RSN info 
-		{
-			BeaconNode->rsn_taglen = (int)(*(address+1));
-			BeaconNode->cipher_type = *(address+7);
-		}
-	}
+        BeaconNode->support_rate[i] = rate_mbps;
+    }
+    
+    /*bandwidth calculation*/
+    BeaconNode->bandwidth = (*(NodeQueue->lsb) & CIPHER_OFFSET_WPA);
+   BeaconNode->suratetag_len = NodeQueue->tag_len;
+    BeaconNode->ant_signal = NodeQueue->ant_signal;
+    BeaconNode->channel_number = NodeQueue->channel_num;
+    
+      //RSN info 
+    const u_char *address;
+    address = NodeQueue->tagged_params;
 
-	BeaconNode->next = NULL;
-	// printf("insert ant_sig\n");printf("NodeQueue address: %p\n", (void *)NodeQueue);
-  //  printf("NodeQueue->lsb address: %p\n", (void *)NodeQueue->lsb);
-	
-	if (rear == NULL)
-		front = rear = BeaconNode;
-	else {
-		rear->next = BeaconNode;
-		rear = BeaconNode;
-	}
-	
-	return 0;
+   for(address;address<(NodeQueue->tagged_params+SEARCH_RANGE);address++)
+   {
+       if(*address ==  RSN_INFO_ADD)  //for RSN info 
+       {
+           BeaconNode->rsn_taglen = (int)(*(address+ RSN_TAG_VAL));
+           BeaconNode->cipher_type = *(address+CIPHER_TAG_VAL);
+       }
+   }
+    
+    BeaconNode->next = NULL;
+   
+    if (rear == NULL)
+        front = rear = BeaconNode;
+    else
+        rear->next = BeaconNode;
+    rear = BeaconNode;
+
+    return 0;
 }
 
-// Function to extract SSID
-void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf)
+
+/*Function to extract SSID*/
+void copy_ssid(const u_char *tagged_params, size_t length, uint8_t *buf) /*inputs are tagged parametres, lenght of ssid ,buffer to store */
 {
-	size_t i = 0, j;
+	size_t i = INTIALIZATION_VAL, j;
 	while (i < length)
 	{
 		uint8_t tag_type = tagged_params[i];
 		uint8_t tag_len = tagged_params[i + 1];
 		if (tag_type == 0)
 		{ // SSID tag type
-			for (j = 0; j < tag_len; ++j)
+			for (j = INTIALIZATION_VAL; j < tag_len; ++j)
 			{
-				char ssid_char = tagged_params[i + 2 + j];
+				char ssid_char = tagged_params[i + SSID_TAG_VAL + j];
 				buf[j] = ssid_char;
 			}
 			buf[j] = '\0'; // null terminator
 			break;
 		}
-		i += 2 + tag_len; // Move to the next tag
+		i += SSID_TAG_VAL + tag_len; // Move to the next tag
 	}
 }
 
-//don't consider
-// Function to display packet information
-void display_packet_queue(struct packet_node *non_duplicate_nodes)
+
+/* Function to delete duplicate nodes */
+void delete_duplicate_packet()
 {
-	struct packet_node *BeaconNode = front;
-	if (BeaconNode == NULL)
-	{
-		printf("Queue is empty\n");
-		return;
-	}
-	while (BeaconNode != NULL)
-	{
-		printf("%d >", beacon_count++);
-		printf("Timestamp:%s.%06ld\t ", BeaconNode->timer, BeaconNode->microsec);
-		printf("  BSSID:");
-		for (int i = 0; i < 5; i++)
-			printf("%02x:", BeaconNode->addr[i]);
-		
-		//potential error
-		if (BeaconNode->addr != NULL && sizeof(BeaconNode->addr) / sizeof(BeaconNode->addr[0]) >= 6) {
-			printf("%02x", BeaconNode->addr[5]); // Example access
-		} else {
-			printf("Error: BeaconNode->addr is NULL or index out of bounds\n");
-		}
-#if BEACON_EXTRA_INFO
-		// Destination Address
-		printf("\tDA:");
-		for (int i = 0; i < 5; i++)
-			printf("%02x:", BeaconNode->addr_da[i]);
-		printf("%02x", BeaconNode->addr_da[5]);
-
-		// Source Address
-		printf("\tSA:");
-		for (int i = 0; i < 5; i++)
-			printf("%02x:", BeaconNode->addr_sa[i]);
-		printf("%02x", BeaconNode->addr_sa[5]);
-#endif
-		printf("\tSignal: %ddBm", BeaconNode->ant_signal - 256);
-
-		/*if SSID is in hidden mode or not in hidden mode*/
-		(BeaconNode->ssid == NULL) ? printf("\t Hidden SSID"):printf("\t Normal mode");
-
-		printf("\t  SSID: %s", BeaconNode->ssid);        
-		printf("\n");
-		printf("\tSupported Rates: ");
-		for (int i = 0; i < BeaconNode->suratetag_len; i++)
-		{
-			printf("%.1f", BeaconNode->support_rate[i]);
-			if (i != BeaconNode->suratetag_len - 1)
-				printf(",   ");
-		}
-		printf("\t[Mbit/sec]");
-		printf("\n");
-		// printf("\tsupported bandwidth is %u\n",temp->bandwidth);
-		if (BeaconNode->bandwidth == 0)
-		{
-			printf("\tSupports only for 20MHz\t");
-		}
-		else
-		{
-
-			printf("\tSupports 20MHz and 40MHz  ");
-		}
-		printf("\tChannel %d",BeaconNode->channel_number);
-
-		/*
-		   open - No RSN field
-		   WPA  - TKIP --> 00-OF-AC-02
-		   WPA2 - AES  --> 00-0F-AC-04
-
-		   Check Group Cipher Suite type: AES (CCM) (4) field in beacon field 
-		   */
-		//printf("RSN tag number is %d\n",temp->rsn_tagno);
-		if(BeaconNode->rsn_taglen<30)
-		{
-			if(BeaconNode->cipher_type==0x2)
-			{
-				printf("\tWPA-TKIP");
-			}
-			else if(BeaconNode->cipher_type==0x04)
-			{
-				printf("\tWPA2-AES");
-			}
-
-
-
-		}
-		else //no RSN field 
-		{
-			printf("\tno RSN field\n");
-		}
-
-		printf("\n");
-		printf("\n");
-
-		BeaconNode = BeaconNode->next;
-	}
-	printf("\n");
-	delete_all_nodes();
-	beaconCaptureCount = 0; // reset count agian to 0
-	//pthread_mutex_unlock(&beaconMutex);
-	printf("----------------------------------------------------------------------------------\n");
-}
-
-void delete_all_nodes() {
-	struct packet_node *temp,*next;
-	temp=front;
-	next=NULL;
-	while (temp != NULL) {
-		next = temp->next;
-		free(temp);
-		temp = next;
-	}
-	front=rear=NULL;
-	printf("All nodes have been deleted.\n");
-}
-
-
-
-bool is_duplicate_in_structure(struct packet_node *node) {
-    if (node == NULL) {
-        // Handle the case where the input node is NULL
-        printf("Error: Input node is NULL\n");
-        return false;
-    }
-
-    //pthread_mutex_lock(&beaconMutex);  // Lock the mutex to ensure thread safety
-    struct packet_node *current = non_duplicate_nodes;
-    while (current != NULL) {
-        // Compare the nodes to check for duplicates
-        if (memcmp(current, node, sizeof(struct packet_node)) == 0) {
-            //pthread_mutex_unlock(&beaconMutex);  // Unlock the mutex before returning
-            return true; // Node is a duplicate
-        }
-        current = current->next;
-    }
-    //pthread_mutex_unlock(&beaconMutex);  // Unlock the mutex after finishing the loop
-    return false; // Node is not a duplicate
-}
-
-
-void insert_non_duplicate_node(struct packet_node *node) {
-	// Allocate memory for a new non_duplicate_nodes structure
-	struct non_duplicate_nodes *new_node = (struct non_duplicate_nodes *)malloc(sizeof(struct non_duplicate_nodes));
-	if (new_node == NULL) {
-		printf("Memory allocation failed\n");
-		return;
-	}
-	// Assign the node to the new non_duplicate_nodes structure
-	new_node->node = node;
-	new_node->next = NULL;
-	// If the non_duplicate_nodes structure is empty, set the new node as the head
-	if (non_duplicate_head == NULL) {
-		non_duplicate_head = new_node;
-		return;
-	}
-	// Traverse the non_duplicate_nodes structure to find the last node
-	struct non_duplicate_nodes *temp = non_duplicate_head;
-	while (temp->next != NULL) {
-		temp = temp->next;
-	}
-	// Insert the new node at the end
-	temp->next = new_node;
-}
-
-
-void delete_duplicate_packet() {
-    struct packet_node *p, *q, *s;
-    if (rear == NULL) {
-        printf("Queue is empty\n");
+  struct packet_node *p, *q, *s;
+    if (rear == NULL)
+    {
+        log_printf(logfile, "Queue is empty\n");
         return;
     }
-    for (p = front; p != NULL; p = p->next) {
-        for (s = p, q = p->next; q != NULL;) {
+    for (p = front; p != NULL; p = p->next)
+    {
+        for (s = p, q = p->next; q != NULL;)
+        {
             int count = 1;
-            for (int i = 0; i < 6; i++) {
-                if (p->addr[i] != q->addr[i]) {
+            for (int i = INTIALIZATION_VAL; i < 6; i++)
+            {
+                if (p->addr[i] != q->addr[i])
+                {
                     count = 0;
                     break;
                 }
             }
-            if (count) {
+            if (count)
+            {
                 s->next = q->next;
-                if (q == rear) {
+                if (q == rear)
+                {
                     rear = s;
                 }
-                struct packet_node *temp = q;
+                struct packet_node  *temp = q;
                 q = q->next;
+              
                 free(temp);
-            } else {
+            }
+            else
+            {
                 s = q;
                 q = q->next;
-                if (!is_duplicate_in_structure(s)) {
-                    insert_non_duplicate_node(s);
-                }
             }
         }
     }
 }
 
-//don't consider
+
+
+
 /* sorting of nodes by their strength using bubble sort exchange by links */
-void sort_antSignal(struct packet_node *non_duplicate_nodes)
+void sort_antSignal()
 {
 
-	if (front == NULL)
-	{
-		printf("list is empty\n");
-		return;
-	}
-	if (front == rear)
-		return;
-	struct packet_node *p, *q, *e = NULL, *s, *r, *temp;
+    if (front == NULL)
+    {
+        log_printf(logfile, "list is empty\n");
+        return;
+    }
+    if (front == rear)
+        return;
+    struct packet_node  *p, *q, *e = NULL, *s, *r, *temp;
 
-	for (e = NULL; front->next != e; e = q)
-	{
-		for (r = p = front; p->next != e; r = p, p = p->next)
-		{
-			q = p->next;
-			if (p->ant_signal < q->ant_signal)
-			{
-				// printf("swap\n");
-				p->next = q->next;
-				q->next = p;
-				if (p != front)
-					r->next = q;
-				else
-					front = q;
-				if (q == rear)
-					rear = p;
-				temp = p;
-				p = q;
-				q = temp;
-			}
-		}
+    for (e = NULL; front->next != e; e = q)
+    {
+        for (r = p = front; p->next != e; r = p, p = p->next)
+        {
+            q = p->next;
+            if (p->ant_signal < q->ant_signal)
+            {
+                // printf("swap\n");
+                p->next = q->next;
+                q->next = p;
+                if (p != front)
+                    r->next = q;
+                else
+                    front = q;
+                if (q == rear)
+                    rear = p;
+                temp = p;
+                p = q;
+                q = temp;
+            }
+        }
+    }
+    	    // Copy the sorted data to the static structure and free the old nodes
+    struct packet_node  *current = front;
+    sorted_beacon_count = INTIALIZATION_VAL;
+    while (current != NULL && sorted_beacon_count < MAX_PACKETS)
+    {
+        strncpy(sorted_beacon_nodes[sorted_beacon_count].timer, current->timer, sizeof(sorted_beacon_nodes[sorted_beacon_count].timer));
+        sorted_beacon_nodes[sorted_beacon_count].microsec = current->microsec;
+        memcpy(sorted_beacon_nodes[sorted_beacon_count].addr, current->addr, sizeof(sorted_beacon_nodes[sorted_beacon_count].addr));
+        strncpy(sorted_beacon_nodes[sorted_beacon_count].ssid, (char*)current->ssid, sizeof(sorted_beacon_nodes[sorted_beacon_count].ssid));
+        memcpy(sorted_beacon_nodes[sorted_beacon_count].addr_da, current->addr_da, sizeof(sorted_beacon_nodes[sorted_beacon_count].addr_da));
+        memcpy(sorted_beacon_nodes[sorted_beacon_count].addr_sa, current->addr_sa, sizeof(sorted_beacon_nodes[sorted_beacon_count].addr_sa));
+        memcpy(sorted_beacon_nodes[sorted_beacon_count].support_rate, current->support_rate, sizeof(sorted_beacon_nodes[sorted_beacon_count].support_rate));
+        sorted_beacon_nodes[sorted_beacon_count].suratetag_len = current->suratetag_len;
+        sorted_beacon_nodes[sorted_beacon_count].ant_signal = current->ant_signal;
+        sorted_beacon_nodes[sorted_beacon_count].bandwidth = current->bandwidth;
+        sorted_beacon_nodes[sorted_beacon_count].channel_number = current->channel_number;
+        sorted_beacon_nodes[sorted_beacon_count].rsn_taglen = current->rsn_taglen;
+        sorted_beacon_nodes[sorted_beacon_count].cipher_type = current->cipher_type;
+
+        sorted_beacon_count++;
+
+        struct packet_node  *temp = current;
+        current = current->next;
+        free(temp);
+    }
+    front = rear = NULL;
+}
+
+/*function for display the beacon queue  */
+void display_sorted_beacon_nodes() 
+{
+	log_printf(logfile, "Sorted Beacon Nodes:\n");
+    for (int i = INTIALIZATION_VAL; i < sorted_beacon_count; ++i) 
+    {
+       log_printf(logfile, "%d >", i + 1);
+        log_printf(logfile, "Timestamp: %s.%06ld\t", sorted_beacon_nodes[i].timer, sorted_beacon_nodes[i].microsec);
+        log_printf(logfile, "  BSSID: ");
+        for (int j = INTIALIZATION_VAL; j < ITERATING_DISPLAY_LOOP_VAL; ++j)
+        {
+            log_printf(logfile, "%02x:", sorted_beacon_nodes[i].addr[j]);
+        }
+        /* Potential error */
+        if (sizeof(sorted_beacon_nodes[i].addr) / sizeof(sorted_beacon_nodes[i].addr[0]) >= DESTINATION_BYTES)
+         {
+            log_printf(logfile, "%02x", sorted_beacon_nodes[i].addr[MAC_ADDR_LEN]); 
+        } 
+        else
+         {
+       
+            log_printf(logfile, "Error: sorted_beacon_nodes[%d].addr is NULL or index out of bounds\n", i);
+        }
+#if BEACON_EXTRA_INFO
+        /* Destination Address */
+       
+        log_printf(logfile, "\tDA: ");
+        for (int j = INTIALIZATION_VAL; j < ITERATING_INSERT_LOOP_VA; ++j){
+            log_printf(logfile, "%02x:", sorted_beacon_nodes[i].addr_da[j]);}
+        log_printf(logfile, "%02x", sorted_beacon_nodes[i].addr_da[MAC_ADDR_LEN]);
+
+        /* Source Address */
+        log_printf(logfile, "\tSA: ");
+        for (int j = INTIALIZATION_VAL; j < ITERATING_INSERT_LOOP_VAL; ++j)
+            log_printf(logfile, "%02x:", sorted_beacon_nodes[i].addr_sa[j]);
+        log_printf(logfile, "%02x", sorted_beacon_nodes[i].addr_sa[MAC_ADDR_LEN]);
+#endif
+        log_printf(logfile, "\tSignal: %ddBm", sorted_beacon_nodes[i].ant_signal - SIGNAL_OFFSET);
+
+	/*Check if SSID is hidden or not */
+	if (strlen(sorted_beacon_nodes[i].ssid) == INTIALIZATION_VAL) {
+	
+		log_printf(logfile, "\tHidden SSID");
+	} else {
+		log_printf(logfile, "\tNormal mode");
+		log_printf(logfile, "\tSSID: %s", sorted_beacon_nodes[i].ssid);
 	}
+	log_printf(logfile, "\n");
+        log_printf(logfile, "\tSupported Rates: ");
+        for (int j = INTIALIZATION_VAL; j < sorted_beacon_nodes[i].suratetag_len; j++) {
+            log_printf(logfile, "%.1f", sorted_beacon_nodes[i].support_rate[j]);
+            if (j != sorted_beacon_nodes[i].suratetag_len - RSN_TAG_VAL)
+                log_printf(logfile, ", ");
+        }
+        log_printf(logfile, "\t[Mbit/sec]\n");
+	log_printf(logfile, "\n");
+
+        if (sorted_beacon_nodes[i].bandwidth == INTIALIZATION_VAL)
+         {
+            log_printf(logfile, "\tSupports only for 20MHz\t");
+        } 
+        else 
+        {
+            log_printf(logfile, "\tSupports 20MHz and 40MHz  ");
+        }
+        log_printf(logfile, "\tChannel %d", sorted_beacon_nodes[i].channel_number);
+
+        if (sorted_beacon_nodes[i].rsn_taglen < RSN_VAL) 
+        {
+            if (sorted_beacon_nodes[i].cipher_type == CIPHER_OFFSET_WPA) 
+            {
+                log_printf(logfile, "\tWPA-TKIP");
+            }
+             else if (sorted_beacon_nodes[i].cipher_type == CIPHER_OFFSET_WPA2) 
+            {
+                log_printf(logfile, "\tWPA2-AES");
+            }
+        } 
+        else 
+        {
+            log_printf(logfile, "\tno RSN field\n");
+        }
+
+        log_printf(logfile, "\n\n");
+    }
+    log_printf(logfile, "\n");
+    beaconCaptureCount = INTIALIZATION_VAL; /* reset count again to 0 */
+    log_printf(logfile, "\n----------------------------------------------------------------------------------\n");
 }
 
 
-uint8_t extract_channel(const u_char *packet)
 
+/*function for extarcting the channel number from the channel frequency */
+
+uint8_t extract_channel(const u_char *packet)/*it takes the input as packet information*/
 {
+	uint8_t freq1 = *(packet + START_ADDR_FREQ1);
+	uint8_t freq2 = *(packet + START_ADDR_FREQ2);
+	int i;
+	uint16_t freq = freq2;
 
-    uint8_t freq1 = *(packet + 26);
-    uint8_t freq2 = *(packet + 27);
-    int i;
-//   printf("%x %x\n", freq1, freq2);
-    uint16_t freq = freq2;
+	for (i = INTIALIZATION_VAL; i < 8; i++)
+   		 freq = freq << SHIFTING_VAL_FREQ;
+	freq = freq | freq1;
 
-    for (i = 0; i < 8; i++)
-        freq = freq << 1;
-    freq = freq | freq1;
-//   printf("Channel Freq %d Hz\n", freq);
-
-    if (freq >= 2412 && freq <= 2472)
-        // 2.4 GHz band (Channels 1-13)
-        return (freq - 2407) / 5;
-    else if (freq == 2484)
-        // 2.4 GHz band (Channel 14)
-        return 14;
-    else if (freq >= 5180 && freq <= 5825)
-        // 5 GHz band
-        return (freq - 5000) / 5;
-    else
-        // Unknown frequency
-        return 0; // Or any suitable default value
-
+	if (freq >= FREQ_2GHZ_LOWER_BOUND && freq <= FREQ_2GHZ_UPPER_BOUND)
+    	/* 2.4 GHz band (Channels 1-13)*/
+    	return (freq - FREQ_2GHZ_BASE) / CHANNEL_SPACING; /* calculating the channel number from channel frequency of 2.4ghz*/
+    
+	else if (freq == FREQ_2GHZ_CHANNEL_14)
+    	/* 2.4 GHz band (Channel 14)*/
+    	return CHANNEL_14_VAL;
+    
+	else if (freq >= FREQ_5GHZ_LOWER_BOUND && freq <= FREQ_5GHZ_UPPER_BOUND)
+    	/* 5 GHz band*/
+	return (freq - FREQ_5GHZ_BASE) / CHANNEL_SPACING; /* calculating the channel number from channel frequency of 5ghz*/
+    
+	else
+    	/* Unknown frequency*/
+    	return 0; // Or any suitable default value
 }
 

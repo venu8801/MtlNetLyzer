@@ -46,6 +46,8 @@ force:
 # Clean target to remove compiled files
 clean:
 	rm -f $(OBJS) $(TARGET)
+	rm -f log/*
+	
 #debug_file_path := $(shell pwd)/log/cap_debug.log
  
 # Export the debug_file_path variable so it can be used in other parts of the Makefile

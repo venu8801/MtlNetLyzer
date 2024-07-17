@@ -28,7 +28,9 @@
 #define	FC_ORDER(fc)		((fc) & 0x8000)
 
 #define MAX_QUEUE_SIZE 1000
-
+#define PROMISCUOUS_VAL 1
+#define PACKET_BUFF 100
+#define BUFFSIZ 8024 
 
 
 struct radiotap_header {

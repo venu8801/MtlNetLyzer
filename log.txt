@@ -1,0 +1,36 @@
+1718257095.951022: glob
+1718257095.951033: optind: 2, argc:3
+1718257095.951035: main: Logging in  DEBUG
+
+1718257095.951036: main: Logging in  ERROR
+
+1718257095.951036: main: Logging in  INFO
+
+1718257095.951037: main: Logging in  WARNING
+
+1718257095.951037: main: Logging in  DUMP 
+
+1718257096.008044: beacon parser thread creation in process
+1718257096.008320: waiting for the capture thread (rear is NULL)
+
+1718257096.008382: -----------beacon capture---------
+
+1718257096.027505: Switched to channel 1 on interface wlp0s20f3
+
+1718257097.048530: Switched to channel 2 on interface wlp0s20f3
+
+1718257098.065154: Switched to channel 3 on interface wlp0s20f3
+
+1718257099.081145: Switched to channel 4 on interface wlp0s20f3
+
+1718257100.106424: Switched to channel 5 on interface wlp0s20f3
+
+1718257101.121882: Switched to channel 6 on interface wlp0s20f3
+
+1718257102.139126: Switched to channel 7 on interface wlp0s20f3
+
+1718257103.165290: Switched to channel 8 on interface wlp0s20f3
+
+1718257104.196650: Switched to channel 9 on interface wlp0s20f3
+
+1718257104.839686: Closing function successfullly

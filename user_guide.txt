@@ -1,0 +1,76 @@
+MtlNetLyzer
+	DESCRIPTION:-This program is designed to capture packets in sniffing mode, providing a robust set of tools for network analysis and security. Among its capabilities is the ability to scan and monitor network traffic, identifying and extracting valuable information from the packets it captures. This includes detailed data on available wireless networks, such as SSIDs, BSSIDs, supported data rates, bandwidth information, channel details, and security protocols. The program also sorts detected access points based on their signal strength (RSSI), verifies if SSIDs are hidden, and determines the type of security each network uses.
+
+Additionally, the program can capture and analyze the handshake procedure during a connection, which is crucial for understanding the establishment, maintenance, and termination of connections, particularly for TCP-based communication. This helps in monitoring the three-way handshake, packet retransmissions, and flow control. For UDP traffic, the program provides insights into connectionless communication, focusing on data streams where speed is prioritized over reliability. Operating seamlessly in both 2.4 GHz and 5 GHz frequency bands, this versatile tool is essential for network administrators and security professionals aiming to ensure efficient, secure, and reliable network performance.
+	
+The features include in this are
+ ******************************************************************************************************************
+	1.scanning:
+	   DESCRIPTION:-The scan function in sniffer mode is a powerful tool designed for wireless network analysis. When activated, it captures and analyzes packets from wireless networks, providing detailed insights into network activity. 
+	 Key features of the scan function include:
+	#SSID Extraction: It identifies and extracts the Service Set Identifier (SSID) of available wireless networks, allowing users to see the names of networks in the vicinity.
+	#Packet Filtering: It supports various filters to narrow down the captured data. For instance:
+	#Management Frames: Captures frames related to network management, such as beacons, probes, authentication, and association.
+	#Control Frames: Captures frames used for controlling access to the wireless medium, such as RTS, CTS, and ACK frames.
+	#Data Frames: Captures frames that carry the actual data being transmitted over the network.
+	#Frequency Band Operation: It operates seamlessly in both the 2.4 GHz and 5 GHz frequency bands, making it versatile for different types of Wi-Fi networks (e.g., 802.11b/g/n for 2.4 GHz and 802.11a/n/ac for 5 GHz).
+
+		#steps for running the application:
+		-set the device in the monitor mode 
+			#command to set monitor mode:-
+			  1.sudo ifconfig wlp0s20f3 down
+			  2.sudo iwconfig wlp0s20f3 mode monitor
+			  3.sudo ifconfig wlp0s20f3 up
+		-to run scan function use "-s" option
+		#command:-
+		  sudo ./MtlNetLyzer [interface] [option] [filter]
+		#example:-
+		sudo ./MtlNetLyzer wlp0s20f3 -s "beacon"
+**************************************************************************************************************************		
+	2.extraction of ssid :
+	   DESCRIPTION:-In sniffer mode, the function offers comprehensive wireless network analysis with several advanced features. It prints a list of unique Access Points (APs) along with their BSSID (Basic Service Set Identifier) and MAC address, providing a clear overview of the available networks. To help identify the strongest and most reliable signals, all detected APs are sorted according to their Received Signal Strength Indicator (RSSI).Additionally, the function displays the supported data rates for each unique AP, giving insights into the potential speed capabilities of the network. It also includes bandwidth information for each AP, indicating the networks capacity and performance characteristics. The function verifies whether the SSID of each AP is hidden, helping to identify networks that might be concealing their presence. Moreover, it identifies and displays the security protocols used by each SSID, such as WPA, WPA2, or WPA3, ensuring users are aware of the networks security measures. Lastly, it provides channel information for each SSID and operates seamlessly on both 2.4 GHz and 5 GHz channels, offering versatility for different Wi-Fi networks.
+		#steps for running the application:
+		-set the device in the monitor mode 
+		-to run this we need to use "-l" option
+		#command:-
+		  sudo ./MtlNetLyzer [interface] [option]
+		#example
+		  sudo ./MtlNetLyzer wlp0s20f3 -l
+*************************************************************************************************************************		  
+	3.connecting :
+	      DESCRIPTION:-Connecting to an SSID involves several key steps to establish a wireless network connection. First, the device scans for available networks and displays a list of detected SSIDs. The user selects the desired SSID from this list, prompting the device to initiate the connection process. If the network is secured, the user will need to enter the correct password or passphrase. The device then authenticates with the network, often performing a handshake to ensure the credentials are valid.Once authentication is successful, the device obtains an IP address from the network, either via DHCP or a static configuration, and completes the connection. At this point, the device can communicate with other devices on the network and access the internet, if available. The process is designed to be seamless and secure, ensuring that users can connect to their chosen networks with minimal hassle while maintaining robust security protocols.
+		
+		#steps for running the application:
+		-to run this we need to use "-c" option
+		#command:-
+		  sudo ./MtlNetLyzer [interface] [option]
+		#example
+		  sudo ./MtlNetLyzer wlp0s20f3 -c
+**************************************************************************************************************************
+	4.handshake :
+	    DESCRIPTION:-The handshake process in wireless networking is a critical mechanism for establishing a secure connection between a client device and an Access Point (AP). This process typically involves a four-step exchange known as the 4-way handshake, which ensures mutual authentication and the secure exchange of encryption keys. Initially, the process begins with the client sending an authentication request to the AP, to which the AP responds with an authentication frame, confirming the clients identity. Once authenticated, the client sends an association request to join the network, and the AP replies with an association response, allowing the client to connect.The core of the handshake process involves four exchanges to establish a secure connection. First, the AP sends an EAPOL-Key frame containing the ANonce (AP s nonce) to the client. The client then uses this ANonce, its own SNonce (client s nonce), and the shared secret (pre-shared key) to generate a pairwise transient key (PTK), and sends an EAPOL-Key frame with the SNonce and a Message Integrity Code (MIC) back to the AP. The AP verifies the MIC, generates its own PTK using the received SNonce, and sends another EAPOL-Key frame containing the Group Temporal Key (GTK) encrypted with the PTK. Finally, the client sends an acknowledgment frame to confirm the receipt of the GTK, completing the handshake.This handshake process ensures that both the client and the AP have authenticated each other and have synchronized encryption keys for secure communication. It is a fundamental part of wireless security protocols such as WPA and WPA2, providing a robust framework for maintaining secure wireless connections.
+
+		#steps for running the application:
+		-to run this we need to use "-w" option
+		#command:-
+		  sudo ./MtlNetLyzer [interface] [option]
+		#example
+		  sudo ./MtlNetLyzer wlp0s20f3 -w
+**************************************************************************************************************************
+	5.ethernet packet capturing:
+	     DESCRIPTION:- Ethernet packet capturing for TCP and UDP is an essential tool for network analysis and troubleshooting. This process involves intercepting and logging data packets that travel over an Ethernet network, allowing for in-depth examination of network traffic. For TCP (Transmission Control Protocol), packet capturing helps analyze connection-oriented traffic, providing insights into the establishment, maintenance, and termination of connections between devices. This includes monitoring the three-way handshake, packet retransmissions, and flow control, which are crucial for ensuring reliable data transfer.For UDP (User Datagram Protocol), packet capturing is equally important as it focuses on connectionless communication. Capturing UDP packets allows for the analysis of data streams where speed is prioritized over reliability, such as in real-time applications like video streaming or online gaming. By capturing and analyzing both TCP and UDP packets, network administrators can gain comprehensive insights into network performance, identify bottlenecks, troubleshoot connectivity issues, and ensure efficient and secure data transmission across the network.
+
+
+		#steps for running the application:
+		-to run this we need to use "-p" option
+		#command:-
+		  sudo ./MtlNetLyzer [interface] [option]
+		#example
+		  sudo ./MtlNetLyzer enp0s31f6 -p
+**************************************************************************************************************************
+	6.help:
+		-to run this we need to use "-h" option
+		-You can use the help option to learn how to use the application if you are unable to start it. 
+
+**************************************************************************************************************************		
+

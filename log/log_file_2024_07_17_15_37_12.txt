@@ -1,0 +1,223 @@
+globstring:beacon
+mgt-(type)-beacon(subtype)
+Interface: wlp0s20f3, Filter:  wlan type mgt subtype beacon
+Capturing from Interface: wlp0s20f3
+enter into the scan_parse_thread
+sudo iw dev wlp0s20f3 set channel 1 
+ command =====	Channel 1: Capturing beacons...
+15:37:12.549816   BSSID:58:fb:96:12:da:98   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:da:98   Type: Mgmt	Subtype: Beacon        channel frq:2462	channel:11	Moschip
+15:37:12.566956   BSSID:fa:9e:94:33:bd:73   DA:ff:ff:ff:ff:ff:ff   SA:fa:9e:94:33:bd:73   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-16942 0153
+15:37:12.576860   BSSID:e4:4e:2d:13:eb:a0   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereCorp
+15:37:12.581003   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:12.583608   BSSID:e4:4e:2d:13:eb:a5   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a5   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereByod
+15:37:12.594286   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:12.615515   BSSID:18:80:90:a5:9e:a0   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL
+15:37:12.622920   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:12.626548   BSSID:18:80:90:a5:9e:a1   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL_Guest
+15:37:12.640593   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:12.681645   BSSID:e4:4e:2d:13:eb:a0   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereCorp
+15:37:12.684031   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:12.686231   BSSID:e4:4e:2d:13:eb:a5   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a5   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereByod
+15:37:12.700096   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:12.717792   BSSID:18:80:90:a5:9e:a0   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL
+15:37:12.722524   BSSID:18:80:90:a5:9e:a1   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL_Guest
+15:37:12.725285   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:12.742966   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:12.759690   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:12.772111   BSSID:fa:9e:94:33:bd:73   DA:ff:ff:ff:ff:ff:ff   SA:fa:9e:94:33:bd:73   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-16942 0153
+15:37:12.785774   BSSID:e4:4e:2d:13:eb:a0   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereCorp
+15:37:12.788446   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:12.793227   BSSID:e4:4e:2d:13:eb:a5   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a5   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereByod
+15:37:12.824865   BSSID:18:80:90:a5:9e:a1   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL_Guest
+15:37:12.828170   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:12.840564   BSSID:70:6d:ec:0d:04:06   DA:ff:ff:ff:ff:ff:ff   SA:70:6d:ec:0d:04:06   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	InternalWifi
+15:37:12.845444   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:12.850090   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:12.862225   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:12.874237   BSSID:fa:9e:94:33:bd:73   DA:ff:ff:ff:ff:ff:ff   SA:fa:9e:94:33:bd:73   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-16942 0153
+15:37:12.879844   BSSID:7c:5a:1c:ef:b7:cf   DA:ff:ff:ff:ff:ff:ff   SA:7c:5a:1c:ef:b7:cf   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	ISPROUT-MHT
+15:37:12.884909   BSSID:e4:4e:2d:13:eb:a0   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereCorp
+15:37:12.887651   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:12.889845   BSSID:e4:4e:2d:13:eb:a5   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a5   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereByod
+15:37:12.898780   BSSID:58:fb:96:13:14:88   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:14:88   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:12.901803   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:12.930144   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:12.947466   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:12.952896   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:12.964947   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:12.991441   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:12.994302   BSSID:e4:4e:2d:13:eb:a5   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a5   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereByod
+15:37:13.000679   BSSID:58:fb:96:13:14:88   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:14:88   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:13.004034   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:13.024513   BSSID:18:80:90:a5:9e:a0   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL
+15:37:13.029746   BSSID:18:80:90:a5:9e:a1   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL_Guest
+15:37:13.032511   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:13.053757   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:13.067380   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:13.078919   BSSID:fa:9e:94:33:bd:73   DA:ff:ff:ff:ff:ff:ff   SA:fa:9e:94:33:bd:73   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-16942 0153
+15:37:13.088650   BSSID:e4:4e:2d:13:eb:a0   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereCorp
+15:37:13.090637   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:13.093658   BSSID:e4:4e:2d:13:eb:a5   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a5   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereByod
+15:37:13.127009   BSSID:18:80:90:a5:9e:a0   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL
+15:37:13.132159   BSSID:18:80:90:a5:9e:a1   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL_Guest
+15:37:13.135014   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:13.153434   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:13.158571   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:13.195468   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:13.198102   BSSID:e4:4e:2d:13:eb:a5   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a5   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereByod
+15:37:13.229369   BSSID:18:80:90:a5:9e:a0   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL
+15:37:13.234553   BSSID:18:80:90:a5:9e:a1   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL_Guest
+15:37:13.237325   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:13.256469   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:13.259455   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:13.272174   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:13.294187   BSSID:e4:4e:2d:13:eb:a0   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereCorp
+15:37:13.296582   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:13.299804   BSSID:e4:4e:2d:13:eb:a5   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a5   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereByod
+15:37:13.311702   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:13.332786   BSSID:18:80:90:a5:9e:a0   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a0   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL
+15:37:13.337418   BSSID:18:80:90:a5:9e:a1   DA:ff:ff:ff:ff:ff:ff   SA:18:80:90:a5:9e:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	APRIL_Guest
+15:37:13.340206   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:17.572287   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:17.614630   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:17.640443   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:17.658116   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:17.662252   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:17.674708   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:17.714911   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:17.743037   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:17.764780   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:17.823315   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:17.845219   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:17.867172   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:17.879624   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:17.947779   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:17.982081   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.050041   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.086563   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.153778   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.189080   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.254820   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.289247   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.314609   BSSID:e4:4e:2d:13:eb:a1   DA:ff:ff:ff:ff:ff:ff   SA:e4:4e:2d:13:eb:a1   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	CereGuest
+15:37:18.357299   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.391628   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.459599   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.481628   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:18.493866   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.562017   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.664334   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.698671   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.766687   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.801040   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.870258   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.903588   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:18.943042   BSSID:ce:15:31:05:65:6d   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:05:65:6d   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11123 6479
+15:37:18.971612   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.006025   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.074007   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.108509   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.176906   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.210936   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.278836   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.315097   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.381195   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.415708   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.483619   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.501190   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:19.518083   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.586557   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.603622   BSSID:ce:15:31:07:43:ab   DA:ff:ff:ff:ff:ff:ff   SA:ce:15:31:07:43:ab   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MOS-COM-11122 1056
+15:37:19.621721   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.688304   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.723595   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.790791   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.825167   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.893109   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:19.915152   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:19.927594   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.017555   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:20.030017   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.097893   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.119918   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:20.132565   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.200190   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.236987   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.304002   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.405145   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.507440   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.541877   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.610147   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.644378   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.712554   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.735197   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:20.749483   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.814655   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.836734   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:20.852013   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.917160   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:20.939131   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	MCTL-851181
+15:37:20.951541   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.019519   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.053812   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.121881   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.224239   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.258662   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.327841   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.429104   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.531714   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.633997   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.736317   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.838859   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:21.943599   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+15:37:22.043495   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2412	channel:1	Moschip
+sudo iw dev wlp0s20f3 set channel 2 
+ command =====	Channel 2: Capturing beacons...
+15:37:22.065384   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:22.167844   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:22.270226   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:22.372739   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:22.475095   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:22.556038   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:22.577555   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:22.590013   BSSID:58:fb:96:13:25:08   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:13:25:08   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:22.679879   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:22.782319   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.083093   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.185826   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.265872   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:27.288377   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.390537   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.470644   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:27.492667   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.597451   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.697972   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.777844   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:27.800362   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:27.902215   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.004824   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.107101   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.187918   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:28.209428   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.311895   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.414410   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.516693   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.619476   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.721490   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.824288   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:28.926192   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.028627   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.130990   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.211429   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:29.233493   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.336357   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.438305   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.540692   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.621028   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:29.643051   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.723428   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip
+15:37:29.746134   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:29.847882   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:30.052813   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:30.155051   BSSID:90:8d:78:18:dd:b3   DA:ff:ff:ff:ff:ff:ff   SA:90:8d:78:18:dd:b3   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	MCTL-851181
+15:37:31.054656   BSSID:58:fb:96:12:d5:38   DA:ff:ff:ff:ff:ff:ff   SA:58:fb:96:12:d5:38   Type: Mgmt	Subtype: Beacon        channel frq:2417	channel:2	Moschip

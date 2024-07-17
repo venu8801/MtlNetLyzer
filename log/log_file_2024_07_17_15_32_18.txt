@@ -1,0 +1,131 @@
+glob
+---------------beacon_parser_thread---------------------------------
+Trying to acquire mutex in parser thread
+Waiting for capture thread (rear is NULL)
+
+---------------------------------beacon_capture_thread-----------------------------------------
+capturing packets
+signalling parse thread cap count: 16
+waiting till parse completes
+Sorted Beacon Nodes:
+1 >Timestamp: 15:32:23.021962	  BSSID: 58:fb:96:12:d4:38	Signal: -40dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 5	WPA2-AES
+
+2 >Timestamp: 15:32:18.738814	  BSSID: 58:fb:96:12:d5:38	Signal: -65dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+3 >Timestamp: 15:32:18.772546	  BSSID: 58:fb:96:13:25:08	Signal: -73dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+4 >Timestamp: 15:32:21.112851	  BSSID: 90:8d:78:18:dd:b3	Signal: -76dBm	Normal mode	SSID: MCTL-851181
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 3	no RSN field
+
+
+5 >Timestamp: 15:32:22.928635	  BSSID: 34:fa:9f:9e:74:e8	Signal: -85dBm	Normal mode	SSID: Credera
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 5	WPA2-AES
+
+6 >Timestamp: 15:32:23.848742	  BSSID: 34:fa:9f:5e:74:e8	Signal: -85dBm	Hidden SSID
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 6	no RSN field
+
+
+7 >Timestamp: 15:32:23.847795	  BSSID: 34:fa:9f:1e:74:e8	Signal: -87dBm	Hidden SSID
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 6	WPA2-AES
+
+
+
+----------------------------------------------------------------------------------
+Signalling capture thread
+Mutex released in parser thread
+out of wait [cap]
+
+---------------beacon_parser_thread---------------------------------
+Trying to acquire mutex in parser thread
+Waiting for capture thread (not enough packets)
+signalling parse thread cap count: 16
+waiting till parse completes
+Sorted Beacon Nodes:
+1 >Timestamp: 15:32:24.865202	  BSSID: 58:fb:96:12:d4:38	Signal: -42dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 7	WPA2-AES
+
+2 >Timestamp: 15:32:23.861775	  BSSID: 58:fb:96:12:da:c8	Signal: -62dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 6	WPA2-AES
+
+3 >Timestamp: 15:32:29.008492	  BSSID: 58:fb:96:12:da:98	Signal: -63dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 11	WPA2-AES
+
+4 >Timestamp: 15:32:28.249654	  BSSID: 46:87:ce:46:38:bb	Signal: -65dBm	Normal mode	SSID: vivo Y16
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 10	no RSN field
+
+
+5 >Timestamp: 15:32:37.128601	  BSSID: fa:9e:94:39:72:b8	Signal: -66dBm	Normal mode	SSID: MOS-COM-16986 5310
+	Supported Rates: 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0, 54.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 161	WPA2-AES
+
+6 >Timestamp: 15:32:37.153505	  BSSID: 58:fb:96:12:da:9c	Signal: -69dBm	Normal mode	SSID: Moschip
+	Supported Rates: 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0, 54.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 161	WPA2-AES
+
+7 >Timestamp: 15:32:31.041206	  BSSID: 58:fb:96:12:da:cc	Signal: -73dBm	Normal mode	SSID: Moschip
+	Supported Rates: 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0, 54.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 40	WPA2-AES
+
+8 >Timestamp: 15:32:28.951925	  BSSID: 8c:7a:15:38:cd:c8	Signal: -80dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 11	WPA2-AES
+
+9 >Timestamp: 15:32:37.195399	  BSSID: 02:d4:9e:a8:1f:15	Signal: -82dBm	Normal mode	SSID: AkashKasturi
+	Supported Rates: 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0, 54.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 161	WPA2-AES
+
+10 >Timestamp: 15:32:23.938632	  BSSID: 36:46:31:f3:66:a0	Signal: -85dBm	Normal mode	SSID: POCO F5
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 6	WPA2-AES
+
+11 >Timestamp: 15:32:37.157008	  BSSID: 7e:21:4a:43:4c:f7	Signal: -86dBm	Normal mode	SSID: MOS-COM-11361 8895
+	Supported Rates: 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0, 54.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 161	WPA2-AES
+
+12 >Timestamp: 15:32:37.119041	  BSSID: 46:e5:17:4a:d8:9b	Signal: -87dBm	Normal mode	SSID: nav
+	Supported Rates: 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0, 54.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 161	WPA2-AES
+
+
+
+----------------------------------------------------------------------------------
+Signalling capture thread
+Mutex released in parser thread
+out of wait [cap]
+
+---------------beacon_parser_thread---------------------------------
+Trying to acquire mutex in parser thread
+Waiting for capture thread (not enough packets)

@@ -35,3 +35,4 @@ typedef struct {
     //struct ether_header eth_header;
 } EapolFrame;
 
+#define ETHER_ADDR_OFFSET_VAL 0x888e /*offset value for extarcting the ether address*/

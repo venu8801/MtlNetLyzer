@@ -1,0 +1,200 @@
+glob
+---------------------------------beacon_capture_thread-----------------------------------------
+
+---------------beacon_parser_thread---------------------------------
+capturing packets
+Trying to acquire mutex in parser thread
+Waiting for capture thread (rear is NULL)
+signalling parse thread cap count: 16
+waiting till parse completes
+Sorted Beacon Nodes:
+1 >Timestamp: 15:36:03.094428	  BSSID: 58:fb:96:12:d5:38	Signal: -67dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+2 >Timestamp: 15:36:03.068931	  BSSID: ce:15:31:05:65:6d	Signal: -68dBm	Normal mode	SSID: MOS-COM-11123 6479
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+3 >Timestamp: 15:36:02.923863	  BSSID: 58:fb:96:13:25:08	Signal: -73dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+4 >Timestamp: 15:36:03.012288	  BSSID: ce:15:31:07:43:ab	Signal: -73dBm	Normal mode	SSID: MOS-COM-11122 1056
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+5 >Timestamp: 15:36:03.098055	  BSSID: 18:80:90:a5:9e:a1	Signal: -76dBm	Normal mode	SSID: APRIL_Guest
+	Supported Rates: 11.0, 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+6 >Timestamp: 15:36:03.053445	  BSSID: e4:4e:2d:13:eb:a5	Signal: -78dBm	Normal mode	SSID: CereByod
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 18.0, 24.0, 36.0, 54.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+7 >Timestamp: 15:36:02.984636	  BSSID: 18:80:90:a5:9e:a0	Signal: -79dBm	Normal mode	SSID: APRIL
+	Supported Rates: 11.0, 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+8 >Timestamp: 15:36:02.959992	  BSSID: 58:fb:96:13:14:88	Signal: -80dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+9 >Timestamp: 15:36:03.105826	  BSSID: 36:0a:99:20:46:d5	Signal: -86dBm	Normal mode	SSID: Wi-fi
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 1	WPA2-AES
+
+
+
+----------------------------------------------------------------------------------
+Signalling capture thread
+Mutex released in parser thread
+out of wait [cap]
+
+---------------beacon_parser_thread---------------------------------
+Trying to acquire mutex in parser thread
+Waiting for capture thread (not enough packets)
+signalling parse thread cap count: 16
+waiting till parse completes
+Sorted Beacon Nodes:
+1 >Timestamp: 15:36:03.231208	  BSSID: 58:fb:96:13:25:08	Signal: -70dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+2 >Timestamp: 15:36:03.271689	  BSSID: ce:15:31:05:65:6d	Signal: -70dBm	Normal mode	SSID: MOS-COM-11123 6479
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+3 >Timestamp: 15:36:03.215771	  BSSID: ce:15:31:07:43:ab	Signal: -73dBm	Normal mode	SSID: MOS-COM-11122 1056
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+4 >Timestamp: 15:36:03.275527	  BSSID: 28:3b:82:2a:57:5f	Signal: -74dBm	Normal mode	SSID: Moschip-AI
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 1	no RSN field
+
+
+5 >Timestamp: 15:36:03.256107	  BSSID: e4:4e:2d:13:eb:a0	Signal: -78dBm	Normal mode	SSID: CereCorp
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 18.0, 24.0, 36.0, 54.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+6 >Timestamp: 15:36:03.259838	  BSSID: e4:4e:2d:13:eb:a1	Signal: -78dBm	Normal mode	SSID: CereGuest
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 18.0, 24.0, 36.0, 54.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+7 >Timestamp: 15:36:03.263143	  BSSID: e4:4e:2d:13:eb:a5	Signal: -79dBm	Normal mode	SSID: CereByod
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 18.0, 24.0, 36.0, 54.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+8 >Timestamp: 15:36:03.267141	  BSSID: 58:fb:96:13:14:88	Signal: -79dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+9 >Timestamp: 15:36:03.347046	  BSSID: fa:9e:94:33:bd:73	Signal: -80dBm	Normal mode	SSID: MOS-COM-16942 0153
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+10 >Timestamp: 15:36:03.208122	  BSSID: 36:0a:99:20:46:d5	Signal: -82dBm	Normal mode	SSID: Wi-fi
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 1	WPA2-AES
+
+
+
+----------------------------------------------------------------------------------
+Signalling capture thread
+Mutex released in parser thread
+out of wait [cap]
+
+---------------beacon_parser_thread---------------------------------
+Trying to acquire mutex in parser thread
+Waiting for capture thread (not enough packets)
+signalling parse thread cap count: 16
+waiting till parse completes
+Sorted Beacon Nodes:
+1 >Timestamp: 15:36:03.464298	  BSSID: e4:4e:2d:13:eb:a5	Signal: -67dBm	Normal mode	SSID: CereByod
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 18.0, 24.0, 36.0, 54.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+2 >Timestamp: 15:36:03.402103	  BSSID: 58:fb:96:12:d5:38	Signal: -68dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+3 >Timestamp: 15:36:03.478186	  BSSID: ce:15:31:05:65:6d	Signal: -70dBm	Normal mode	SSID: MOS-COM-11123 6479
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+4 >Timestamp: 15:36:03.436367	  BSSID: 58:fb:96:13:25:08	Signal: -71dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+5 >Timestamp: 15:36:03.420172	  BSSID: ce:15:31:07:43:ab	Signal: -73dBm	Normal mode	SSID: MOS-COM-11122 1056
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+6 >Timestamp: 15:36:03.461066	  BSSID: e4:4e:2d:13:eb:a1	Signal: -77dBm	Normal mode	SSID: CereGuest
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 18.0, 24.0, 36.0, 54.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	no RSN field
+
+
+7 >Timestamp: 15:36:03.562918	  BSSID: e4:4e:2d:13:eb:a0	Signal: -79dBm	Normal mode	SSID: CereCorp
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 18.0, 24.0, 36.0, 54.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+8 >Timestamp: 15:36:03.378105	  BSSID: 28:3b:82:2a:57:5f	Signal: -80dBm	Normal mode	SSID: Moschip-AI
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports 20MHz and 40MHz  	Channel 1	no RSN field
+
+
+9 >Timestamp: 15:36:03.452454	  BSSID: 18:80:90:a5:9e:a0	Signal: -80dBm	Normal mode	SSID: APRIL
+	Supported Rates: 11.0, 6.0, 9.0, 12.0, 18.0, 24.0, 36.0, 48.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+10 >Timestamp: 15:36:03.552437	  BSSID: fa:9e:94:33:bd:73	Signal: -80dBm	Normal mode	SSID: MOS-COM-16942 0153
+	Supported Rates: 1.0, 2.0, 5.5, 11.0, 6.0, 9.0, 12.0, 18.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+11 >Timestamp: 15:36:03.471976	  BSSID: 58:fb:96:13:14:88	Signal: -83dBm	Normal mode	SSID: Moschip
+	Supported Rates: 1.0, 2.0, 5.5, 11.0	[Mbit/sec]
+
+	Supports only for 20MHz		Channel 1	WPA2-AES
+
+
+
+----------------------------------------------------------------------------------
+Signalling capture thread
+Mutex released in parser thread
+out of wait [cap]
+
+---------------beacon_parser_thread---------------------------------
+Trying to acquire mutex in parser thread
+Waiting for capture thread (not enough packets)

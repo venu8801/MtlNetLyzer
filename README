@@ -1,9 +1,0 @@
-------------------------------------MtlNetLyzer_v1.1_b-----------------------------------------------
-MtlNetLyzer_v1.1_b
-May 17 10:53PM
--added new option 'l'
-    -prints unique APs with BSSID and MAC address
-    -all the APs are sorted according to their RSSI
-    -added supported data rates for each unique APs
-    -added bandwidth info 
-------------------------------------------------------------------------------------------------------

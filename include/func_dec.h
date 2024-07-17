@@ -23,3 +23,5 @@ extern int isQueueFull();
 extern void enqueuePacket(const struct pcap_pkthdr *header, const u_char *packet);
 
 extern struct PacketNode dequeuePacket();
+
+char* filter_extraction(int argc, char* argv[]);
